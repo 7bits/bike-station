@@ -3,6 +3,8 @@ BikeStation
 
 Service for deploying automated station for renting bikes. Consist of android app(key), raspberyPi as station lock and server.
 
+Api Documentation is here: [BikeStationAPIDoc](http://cat-in-the-dark-wood.github.io/BikeStationAPIDoc)
+
 ## Raspberry Pi
 ```bash
 sudo python -m rpi.main
