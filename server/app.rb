@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'sequel'
-require 'sqlite3'
 require 'rack/parser'
 
 OK = 200
@@ -15,7 +14,7 @@ use Rack::Parser, :content_types => {
   'application/json'  => Proc.new { |body| ::MultiJson.decode body }
 }
 
-DB = Sequel.sqlite('bike_station.db')
+DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite:/')
 
 unless DB.table_exists? (:users)
   DB.create_table :users do
@@ -23,6 +22,7 @@ unless DB.table_exists? (:users)
     String :email
     String :PIN
   end
+  DB[:users].insert(email: 'user@gmail.com', PIN: '1234')
 end
 unless DB.table_exists? (:bikes)  
   DB.create_table :bikes do
@@ -30,6 +30,8 @@ unless DB.table_exists? (:bikes)
     foreign_key :station_id
     integer :gate_number
   end
+  DB[:bikes].insert(station_id: 1, gate_number: 1)
+  DB[:bikes].insert(station_id: 1, gate_number: 2)
 end
 unless DB.table_exists?(:stations)
   DB.create_table :stations do
@@ -37,6 +39,7 @@ unless DB.table_exists?(:stations)
     String :name
     String :address
   end
+  DB[:stations].insert(id: 1, name: 'Some station', address: 'Somewhere')
 end
 
 unless DB.table_exists? (:rents)
@@ -131,7 +134,7 @@ get '/' do
 end
 
 get '/users' do
-  json data: User.last.id
+  json data: User.all.map{|u| {id: u.id, email: u.email, pin: u.PIN}}
 end
 
 get '/bikes' do
