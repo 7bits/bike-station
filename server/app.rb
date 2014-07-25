@@ -137,6 +137,11 @@ get '/users' do
   json data: User.all.map{|u| {id: u.id, email: u.email, PIN: u.PIN}}
 end
 
+get '/rents' do
+  json rents: Rent.all.map { |r| {id: r.id, user_id: r.user_id, closed_at: r.closed_at, openned_at: r.openned_at, closed: r.closed} }
+end
+
+
 get '/bikes' do
   puts "PARAMS: #{params}"
   begin
