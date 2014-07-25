@@ -81,7 +81,7 @@ class RentService
     bike.update(gate_number: -1, station_id: nil)
     rent = Rent.create(user_id: user.id, bike_id: bike.id, openned_at: DateTime.now)
     
-    {gate_number: gate_number, openned_at: rent.openned_at}
+    {gateNumber: gate_number, opennedAt: rent.openned_at}
   end
 
   def close_rent(user, gate_number, station_id)
@@ -98,7 +98,7 @@ class RentService
     end
     rent.update(closed: true, closed_at: DateTime.now)
 
-    {closed_at: rent.closed_at, money: 100}
+    {closedAt: rent.closed_at, money: 100}
   end
 
   def has_rent?(user)
