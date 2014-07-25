@@ -71,7 +71,7 @@ class ClientThread(threading.Thread):
                         select_bike_resp = requests.post(self._endpoint + POST_START_RENT, data=post_data).json()
                         log.debug(select_bike_resp)
                         if select_bike_resp[STATUS] == HTTP_STATUS_ACCEPTED:
-                            open_gate(select_bike_resp[GATE_NUMBER])
+                            open_gate(select_bike_resp[DATA][GATE_NUMBER])
                             self.send(json.dumps({STATUS: OK}))
                         elif select_bike_resp[STATUS] == HTTP_STATUS_UNAUTHORIZED \
                                 or select_bike_resp[STATUS] == HTTP_STATUS_FORBIDDEN:
@@ -85,6 +85,7 @@ class ClientThread(threading.Thread):
                         post_data.update({GATE_NUMBER: gate_id, BIKE_ID: self._bike_id})
                         return_bike_resp = requests.post(self._endpoint + POST_CLOSE_RENT, data=post_data).json()
                         if return_bike_resp[STATUS] == HTTP_STATUS_ACCEPTED:
+                            lock_gate(gate_id)
                             self.send(json.dumps({STATUS: OK}))
                         elif return_bike_resp[STATUS] == HTTP_STATUS_FORBIDDEN \
                                 or return_bike_resp[STATUS] == HTTP_STATUS_UNAUTHORIZED:
