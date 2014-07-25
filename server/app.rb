@@ -108,7 +108,7 @@ end
 
 class UserAuthenticator
   def authenticate(email, pin)
-    user = User.where(email: email, pin: pin).first
+    user = User.where(email: email, PIN: pin).first
     raise NotAuthorized.new('Email or pin is wrong') if user.nil?
     user
   end
@@ -134,7 +134,7 @@ get '/' do
 end
 
 get '/users' do
-  json data: User.all.map{|u| {id: u.id, email: u.email, pin: u.PIN}}
+  json data: User.all.map{|u| {id: u.id, email: u.email, PIN: u.PIN}}
 end
 
 get '/bikes' do
