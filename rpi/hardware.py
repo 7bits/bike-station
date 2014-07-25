@@ -13,7 +13,7 @@ def init_gpio():
 
 
 def open_gate(gate_id):
-    log.debug("Gate {} opened".format(gate_id - 1))
+    log.debug("Gate {} opened".format(gate_id))
     OPENED = True
     # turn_led(True)
 
