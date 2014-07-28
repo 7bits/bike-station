@@ -1,0 +1,33 @@
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+.idea
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+*.vagrant
+/cookbooks/*
+# Ignore application configuration
+/config/application.yml
+
+*.sublime-project
+*.sublime-workspace
