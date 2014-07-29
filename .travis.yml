@@ -1,0 +1,26 @@
+lanuage: ruby
+rvm: 2.1.0
+addons:
+  postgresql: 9.3
+  code_climate:
+    repo_token: 8a963a52f61bd7530e8493bbf76da96f61e767d14a22c95de12cd40f54347e5b
+services:
+- postgresql
+before_script:
+- psql -c 'create database SmartBike_test;' -U postgres
+- cp config/database.travis.yml config/database.yml
+- bundle exec rake db:migrate
+- bundle exec rake db:test:prepare
+script:
+- bundle exec rspec spec/
+deploy:
+  provider: heroku
+  app: smartbike
+  api_key:
+    secure: BKMUHZ34pO56SdKDXiRV/RLepi0Zk+wmjv/HIyI11efukbWvMITlURsTMmN4vEJtroyqd1ppgGRYDmcQB6R93/6Jb2QF48M0BM0hhPhfFSTgYkFJqg9lOQ4Hwu0gPQq9rnhec0O4tO24mqbD2KLnBVzZZQDwUMfHo5Qc/mg1Mzg=
+  run:
+  - rake db:migrate
+  - restart
+notifications:
+  email:
+  - ilya.blan4@gmail.com

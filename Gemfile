@@ -23,7 +23,11 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'codeclimate-test-reporter', group: :test, require: nil
 end
 
 
 gem 'rails_12factor', group: :production
+
+gem 'travis-lint', require: false
+gem 'coveralls', require: false
