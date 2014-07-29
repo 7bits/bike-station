@@ -1,4 +1,4 @@
 test:
   adapter: postgresql
-  database: SmartBike_test
+  database: smartbike_test
   username: postgres

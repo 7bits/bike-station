@@ -7,7 +7,7 @@ addons:
 services:
 - postgresql
 before_script:
-- psql -c 'create database SmartBike_test;' -U postgres
+- psql -c 'create database smartbike_test;' -U postgres
 - cp config/database.travis.yml config/database.yml
 - bundle exec rake db:migrate
 - bundle exec rake db:test:prepare
