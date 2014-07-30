@@ -1,0 +1,7 @@
+= form_for @form, url: open_rent_path do |f|
+  = render 'layouts/error_messages', :object => f.object
+  = f.text_field :bike_id
+  = f.fields_for :user do |u|
+    = u.text_field :name
+    = u.text_field :surname
+  = f.submit 'Open rent'  
