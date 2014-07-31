@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get 'rents' => 'rents#index'
-  post 'rents/open' => 'rents#open', as: :open_rent
-  post 'rents/close' => 'rents#close', as: :close_rent
+  resources :rents do
+    post 'open', on: :collection
+    post 'close', on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
