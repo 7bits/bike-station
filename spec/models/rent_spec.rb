@@ -9,6 +9,8 @@ RSpec.describe Rent, :type => :model do
   
   it { should respond_to :bike }
   it { should respond_to :user }
+  it { should respond_to :starting_station }
+  it { should respond_to :terminal_station }
 
   it { should be_valid }
 end

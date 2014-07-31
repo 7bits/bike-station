@@ -37,7 +37,8 @@ CREATE TABLE bikes (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    in_use boolean DEFAULT false
+    in_use boolean DEFAULT false,
+    station_id integer
 );
 
 
@@ -71,7 +72,9 @@ CREATE TABLE rents (
     openned_at timestamp without time zone,
     closed_at timestamp without time zone,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    terminal_station_id integer,
+    starting_station_id integer NOT NULL
 );
 
 
@@ -101,6 +104,39 @@ ALTER SEQUENCE rents_id_seq OWNED BY rents.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: stations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE stations (
+    id integer NOT NULL,
+    latitude numeric,
+    longitude numeric,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: stations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE stations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: stations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE stations_id_seq OWNED BY stations.id;
 
 
 --
@@ -154,6 +190,13 @@ ALTER TABLE ONLY rents ALTER COLUMN id SET DEFAULT nextval('rents_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY stations ALTER COLUMN id SET DEFAULT nextval('stations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -171,6 +214,14 @@ ALTER TABLE ONLY bikes
 
 ALTER TABLE ONLY rents
     ADD CONSTRAINT rents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: stations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY stations
+    ADD CONSTRAINT stations_pkey PRIMARY KEY (id);
 
 
 --
@@ -215,4 +266,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140730051657');
 INSERT INTO schema_migrations (version) VALUES ('20140730052024');
 
 INSERT INTO schema_migrations (version) VALUES ('20140731052018');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731055337');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731055457');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731061305');
 

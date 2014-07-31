@@ -5,6 +5,7 @@ RSpec.describe Bike, :type => :model do
   subject { bike }
 
   it { should respond_to :rents }
+  it { should respond_to :station }
 
   it { should be_valid }
 end

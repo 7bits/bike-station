@@ -4,5 +4,7 @@ FactoryGirl.define do
     closed_at DateTime.now
     bike
     user
+    association :starting_station, factory: :station
+    association :terminal_station, factory: :station
   end
 end
