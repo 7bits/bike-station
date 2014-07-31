@@ -24,3 +24,4 @@ deploy:
 notifications:
   email:
   - ilya.blan4@gmail.com
+  slack: catinthedark:KluwUT052iDsQpYWdH5w5ifZ
