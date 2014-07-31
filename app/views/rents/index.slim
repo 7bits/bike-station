@@ -1,7 +1,18 @@
-= form_for @form, url: open_rents_path do |f|
-  = render 'layouts/error_messages', :object => f.object
-  = f.text_field :bike_id
-  = f.fields_for :user do |u|
-    = u.text_field :name
-    = u.text_field :surname
-  = f.submit 'Open rent'  
+table.table.table-hover
+  thead
+    tr
+      th Name
+      th Surname
+      th Openned At
+      th Bike
+      th 
+  tbody
+    - @rents.each do |rent|
+      tr
+        td= rent.user.name
+        td= rent.user.surname
+        td= rent.openned_at
+        td= rent.bike_id
+        td= link_to 'Close', close_rent_path(rent), method: :post, class: 'btn btn-default'
+
+= render 'open_rent_form'

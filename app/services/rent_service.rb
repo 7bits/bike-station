@@ -6,9 +6,8 @@ class RentService
     rent if rent.save
   end
 
-  def close_rent(bike_id)
-    bike = Bike.find bike_id
-    rent = Rent.where('closed_at is NULL').find_by(bike: bike)
+  def close_rent(rent_id)
+    rent = Rent.where('closed_at is NULL').find_by(id: rent_id)
     rent.update_attribute(:closed_at, DateTime.now) if rent
     rent
   end
