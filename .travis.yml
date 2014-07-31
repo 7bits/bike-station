@@ -24,4 +24,5 @@ deploy:
 notifications:
   email:
   - ilya.blan4@gmail.com
-  slack: catinthedark:KluwUT052iDsQpYWdH5w5ifZ
+  slack:
+    secure: GjyzegchfU+hnSWArnMoit5P8CmI8Bx3TArWL9Kz8ukbLknqcbCcZBC8AhwFdJdjLVIQeUzzMB/Zv69tUzRIULUdoxD5WMXrGReBEGQ2Xk7vNLi6ZSKiaDUlbR0F4uhB5eBTLs+IOJG7NSGrofZyyWc2CNCdXkJMWUlt+z7P250=
