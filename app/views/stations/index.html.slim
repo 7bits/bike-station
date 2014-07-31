@@ -1,2 +1,14 @@
-h1 Stations#index
-p Find me in app/views/stations/index.html.slim
+h1 Select station
+table.table.table-hover
+  thead
+    tr
+      th Name
+      th Free bikes
+      th Free gates
+      th
+  tbody
+    - @stations.each do |station|
+      tr
+        td= link_to station.name, station_rents_path(station)
+        td= station.bikes.unused.count
+        td #

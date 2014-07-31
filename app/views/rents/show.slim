@@ -1,5 +1,21 @@
-p= @rent.user.name
-p= @rent.user.surname
-p= @rent.bike_id
-p= @rent.openned_at
-p= @rent.closed_at
+dl.dl-horizontal
+  dt User name
+  dd= @rent.user.name
+  
+  dt User surname
+  dd= @rent.user.surname
+  
+  dt Bike id
+  dd= @rent.bike_id
+  
+  dt Starting station
+  dd= @rent.starting_station.name
+  
+  dt Terminal station
+  dd= @rent.terminal_station.name
+  
+  dt Openned at
+  dd= @rent.openned_at
+  
+  dt Closed at
+  dd= @rent.closed_at
