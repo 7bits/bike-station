@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-station_1 = Station.create(name: 'Иртышская набережная', latitude: 54.968094, longitude: 73.378906)
-station_2 = Station.create(name: 'Омская крепость', latitude: 54.982530, longitude: 73.370534)
+station_1 = Station.create(name: 'Иртышская набережная', latitude: 54.968094, longitude: 73.378906, gates_count: 10)
+station_2 = Station.create(name: 'Омская крепость', latitude: 54.982530, longitude: 73.370534, gates_count: 10)
 
 bike_1 = Bike.create(station: station_1)
 bike_2 = Bike.create(station: station_1)

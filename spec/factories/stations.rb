@@ -5,5 +5,6 @@ FactoryGirl.define do
     latitude 54.966667
     longitude 73.383333
     sequence(:name) {|n| "station_#{n}"} 
+    gates_count 10
   end
 end

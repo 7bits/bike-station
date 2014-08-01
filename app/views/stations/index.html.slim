@@ -11,4 +11,4 @@ table.table.table-hover
       tr
         td= link_to station.name, station_rents_path(station)
         td= station.bikes.unused.count
-        td #
+        td= station.free_gates_count

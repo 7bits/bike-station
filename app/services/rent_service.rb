@@ -15,7 +15,7 @@ class RentService
     rent = Rent.where('closed_at is NULL').find(rent_id)
     ActiveRecord::Base.transaction do
       rent.update_attributes!(closed_at: DateTime.now, terminal_station: station)
-      rent.bike.update_attributes!(in_use: false)
+      rent.bike.update_attributes!(in_use: false, station: station)
     end
 
     rent

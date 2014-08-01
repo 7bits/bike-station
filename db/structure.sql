@@ -116,7 +116,8 @@ CREATE TABLE stations (
     longitude numeric,
     name character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    gates_count integer DEFAULT 0 NOT NULL
 );
 
 
@@ -272,4 +273,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140731055337');
 INSERT INTO schema_migrations (version) VALUES ('20140731055457');
 
 INSERT INTO schema_migrations (version) VALUES ('20140731061305');
+
+INSERT INTO schema_migrations (version) VALUES ('20140801034518');
 
