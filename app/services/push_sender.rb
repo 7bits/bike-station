@@ -1,12 +1,9 @@
 class PushSender
-  def send_notification(input)
-    bike = station.bikes.find(input.bike_id)
-    registration_id = bike.registration_id
-    user_info = input.user.attributes
-    
-    gcm_api_key = Rails.application.secrets.gcm_api_key
-    gcm = GCM.new(gcm_api_key)
+  def initializer(api_key)
+    @gcm = GCM.new(gcm_api_key)
+  end
 
-    response = gcm.send_notification(registration_id, user_info)
+  def send_notification_to(bike, data)
+    response = @gcm.send_notification([bike.registration_id], data)
   end
 end
