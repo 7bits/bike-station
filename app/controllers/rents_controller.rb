@@ -13,9 +13,11 @@ class RentsController < ApplicationController
   def open
     @form = RentInput.new open_rent_params
     service = RentService.new
+    push_sender = PushSender.new
     
     if @form.valid?
       service.open_rent(@form, @station)
+      push_sender.send_notification(@form)
       redirect_to station_rents_path(@station)
     else
       @rents = Rent.openned # TODO: only for rendering errros. Replase method with ajax and remove it
