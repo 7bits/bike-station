@@ -32,3 +32,4 @@ gem 'rails_12factor', group: :production
 
 gem 'travis-lint', require: false
 gem 'coveralls', require: false
+gem 'gcm'
