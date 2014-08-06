@@ -8,7 +8,7 @@ class Api::V1::BikesController < ApplicationController
     if @bike.nil?
       render json: {status: :not_found, message: 'Your bike is not registered'}
     else
-      bike.update_attribute(:registration_id, params[:registration_id])
+      @bike.update_attribute(:registration_id, params[:registration_id])
       render json: {status: :ok}
     end
   end
