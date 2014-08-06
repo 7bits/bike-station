@@ -8,6 +8,7 @@ RSpec.describe Bike, :type => :model do
   it { should respond_to :station }
   it { should respond_to :uuid }
   it { should respond_to :registration_id }
+  it { should respond_to :name }
 
   it { should be_valid }
 end

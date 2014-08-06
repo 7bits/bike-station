@@ -40,7 +40,8 @@ CREATE TABLE bikes (
     in_use boolean DEFAULT false,
     station_id integer,
     uuid character varying(255) NOT NULL,
-    registration_id character varying(255)
+    registration_id character varying(255),
+    name character varying(255)
 );
 
 
@@ -280,4 +281,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140801034518');
 INSERT INTO schema_migrations (version) VALUES ('20140805053932');
 
 INSERT INTO schema_migrations (version) VALUES ('20140806103254');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806154105');
 
