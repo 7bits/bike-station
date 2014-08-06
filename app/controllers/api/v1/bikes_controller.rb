@@ -3,14 +3,21 @@ class Api::V1::BikesController < ApplicationController
   respond_to :json
 
   def register
-    push_sender = PushSenderFactory.build
-    @bike = Bike.find_by(uuid: params[:uuid])
-    if @bike.nil?
-      render json: {status: :not_found, message: 'Your bike is not registered'}
-    else
-      @bike.update_attribute(:registration_id, params[:registration_id])
-      push_sender.send_notification_to(@bike, {status: :ok, message: 'Successfull registration'})
-      render json: {status: :ok}
+    input = BikeInput.new params
+    service = BikeRegistrator.new
+    
+    unless input.valid?
+      render json: {message: input.errors.messages}, status: :not_acceptable and return
     end
+
+    begin
+      service.register!(input)
+    rescue BikeNotFound => ex
+      render json: {message: 'Bike not found'}, status: :not_found and return
+    rescue BikeRegistrationError => ex
+      render json: {message: ex.message}, status: :unprocessable_entity and return
+    end
+    
+    render json: {message: 'Successfull registration'}, status: :ok
   end
 end

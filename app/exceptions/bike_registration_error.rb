@@ -1,0 +1,1 @@
+class BikeRegistrationError < StandardError; end
