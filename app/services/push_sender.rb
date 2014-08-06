@@ -1,6 +1,6 @@
 class PushSender
   def initialize(api_key)
-    @gcm = GCM.new(gcm_api_key)
+    @gcm = GCM.new(api_key)
   end
 
   def send_notification_to(bike, data)
