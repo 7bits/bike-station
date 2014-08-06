@@ -3,7 +3,7 @@
   .form-group
     = f.label 'Bike', class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.collection_select :bike_id, @station.bikes.unused.select(:id), :id, :id, {}, class: 'form-control'
+      = f.collection_select :bike_id, @station.bikes.unused.select(:id, :name), :id, :name, {}, class: 'form-control'
 
   = f.fields_for :user do |u|
     .form-group
