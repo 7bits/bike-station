@@ -17,7 +17,8 @@ class RentsController < ApplicationController
     
     if @form.valid?
       rent = service.open_rent(@form, @station)
-      push_sender.send_notification_to(rent.bike, {user: rent.user.attributes, rent: rent.attributes, code: 'open'})
+      rent_presenter = RentPresenter.new(rent, :open)
+      push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to station_rents_path(@station)
     else
       @rents = Rent.openned # TODO: only for rendering errros. Replase method with ajax and remove it
@@ -34,7 +35,8 @@ class RentsController < ApplicationController
       flash[:danger] = "Can't close rent."
       redirect_to station_rents_path(@station)
     else
-      push_sender.send_notification_to(rent.bike, {user: rent.user.attributes, rent: rent.attributes, code: 'close'})
+      rent_presenter = RentPresenter.new(rent, :close)
+      push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to station_rent_path(@station, rent)
     end
   end
