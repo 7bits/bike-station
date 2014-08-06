@@ -3,7 +3,8 @@ class BikeRegistrator
     bike = Bike.find_or_create_by uuid: input.uuid
     raise BikeNotFound.new if bike.nil?
 
-    if bike.update_attributes(registration_id: input.registration_id, name: input.name)
+    # TODO: remove setting station
+    if bike.update_attributes(registration_id: input.registration_id, name: input.name, station: Station.first)
       bike
     else
       raise BikeRegistrationError.new(bike.errors.messages)
