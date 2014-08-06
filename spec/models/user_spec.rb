@@ -6,7 +6,6 @@ RSpec.describe User, :type => :model do
 
   it { should respond_to :name }
   it { should respond_to :surname }
-  it { should respond_to :is_anonimous }
 
   it { should respond_to :rents }
 

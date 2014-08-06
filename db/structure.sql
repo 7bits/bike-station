@@ -150,7 +150,6 @@ CREATE TABLE users (
     id integer NOT NULL,
     name character varying(255),
     surname character varying(255),
-    is_anonimous boolean,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -279,4 +278,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140731061305');
 INSERT INTO schema_migrations (version) VALUES ('20140801034518');
 
 INSERT INTO schema_migrations (version) VALUES ('20140805053932');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806103254');
 
