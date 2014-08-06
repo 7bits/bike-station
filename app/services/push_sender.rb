@@ -1,5 +1,5 @@
 class PushSender
-  def initializer(api_key)
+  def initialize(api_key)
     @gcm = GCM.new(gcm_api_key)
   end
 
