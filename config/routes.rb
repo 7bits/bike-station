@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'bikes/register' => 'bikes#register'
-      get 'stations' => 'stations#get_stations'
+      get 'stations' => 'stations#index'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
