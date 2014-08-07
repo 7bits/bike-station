@@ -4,6 +4,9 @@ html
     title
       | SmartBike | 
       == yield(:title)
+    
+    script src="http://maps.google.com/maps/api/js?sensor=true"
+
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
