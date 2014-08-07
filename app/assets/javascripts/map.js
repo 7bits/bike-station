@@ -3,24 +3,33 @@
     console.error('Something went wrong.');
   }
 
-  var renderMarkers = function(stations) {
-    console.log(stations);
-  }
-
   window.Map = {
-    start: function() {
-      var map = new L.Map('map', {center: new L.LatLng(55.00, 73.5), zoom: 13});
-      var googleLayer = new L.Google('ROADMAP');
-      map.addLayer(googleLayer);
+    render: function() {
+      var map = new GMaps({
+        el: "#map",
+        lat: "54.981629",
+        lng: "73.368761"
+      });
+      var markers_pool = [];
+
       $.ajax({
         type: 'GET',
         url: 'api/v1/stations',
         dataType: 'json',
         success: function(data) {
           if (data) {
-            console.log(data);
-            stations = data.stations;
-            renderMarkers(stations);
+            for (var i = 0, len = data.stations.length; i < len; i++){
+              var station = data.stations[i];
+              if (station.lat != undefined && station.lng != undefined){
+                markers_pool.push({
+                  lat: station.lat,
+                  lng: station.lng,
+                  title: station.name
+                });
+              }
+            }
+            console.log(markers_pool);
+            map.addMarkers(markers_pool);
           }
         },
         error: server_error_handler,
