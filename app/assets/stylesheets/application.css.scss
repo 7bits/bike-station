@@ -9,3 +9,15 @@ body {
   width:100%;
   height:500px;
 }
+
+div.station_overlay {
+  width: 38px;
+  height: 38px;
+  opacity: 0.7;
+  border-radius: 19px;
+  background-color: #009688;
+  color: #FFFFFF;
+  font-size: 18pt;
+  text-align: center;
+  vertical-align: middle;
+}

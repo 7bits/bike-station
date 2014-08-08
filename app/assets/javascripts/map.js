@@ -21,18 +21,15 @@
             for (var i = 0, len = data.stations.length; i < len; i++){
               var station = data.stations[i];
               if (station.lat != undefined && station.lng != undefined){
-                markers_pool.push({
+                map.drawOverlay({
                   lat: station.lat,
                   lng: station.lng,
                   title: station.name,
-                  infoWindow: {
-                    content: '<p>' + station.name + '</p> <p> Доступно велосипедов: ' + station.bikes_count + '</p>'
-                  }
+                  layer: 'overlayMouseTarget',
+                  content: '<div class="station_overlay" title="' + station.name + '"> <p>' + station.bikes_count + '</p> </div>'
                 });
               }
             }
-            console.log(markers_pool);
-            map.addMarkers(markers_pool);
           }
         },
         error: server_error_handler,
