@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     operator = OperatorAuthenticator.new(request.env['omniauth.auth']).model
 
     if operator
-      sign_in(admin)
+      sign_in(operator)
       flash[:success] = 'Successfully authenticated from google-plus account.'
       redirect_to :root
     else
