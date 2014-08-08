@@ -65,6 +65,39 @@ ALTER SEQUENCE bikes_id_seq OWNED BY bikes.id;
 
 
 --
+-- Name: operators; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE operators (
+    id integer NOT NULL,
+    email character varying(255) NOT NULL,
+    authentication_token character varying(255),
+    approved boolean DEFAULT false NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: operators_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE operators_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: operators_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE operators_id_seq OWNED BY operators.id;
+
+
+--
 -- Name: rents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -186,6 +219,13 @@ ALTER TABLE ONLY bikes ALTER COLUMN id SET DEFAULT nextval('bikes_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY operators ALTER COLUMN id SET DEFAULT nextval('operators_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY rents ALTER COLUMN id SET DEFAULT nextval('rents_id_seq'::regclass);
 
 
@@ -212,6 +252,14 @@ ALTER TABLE ONLY bikes
 
 
 --
+-- Name: operators_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY operators
+    ADD CONSTRAINT operators_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: rents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -233,6 +281,20 @@ ALTER TABLE ONLY stations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_operators_on_authentication_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_operators_on_authentication_token ON operators USING btree (authentication_token);
+
+
+--
+-- Name: index_operators_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_operators_on_email ON operators USING btree (email);
 
 
 --
@@ -283,4 +345,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140805053932');
 INSERT INTO schema_migrations (version) VALUES ('20140806103254');
 
 INSERT INTO schema_migrations (version) VALUES ('20140806154105');
+
+INSERT INTO schema_migrations (version) VALUES ('20140808054843');
 

@@ -7,7 +7,8 @@ gem 'thin'
 gem 'pg'
 gem 'virtus'
 
-gem 'sorcery'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 gem 'slim-rails'
 gem 'sass-rails', '~> 4.0.3'

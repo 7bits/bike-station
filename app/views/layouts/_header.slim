@@ -13,6 +13,8 @@ nav.collapse.navbar-collapse.bar role="navigation"
 
   ul.nav.navbar-nav.navbar-right
     li
-      - if true
-        = link_to '#', :method => :delete do
+      - if operator_signed_in?
+        = link_to auth_logout_path, :method => :delete do
           span.glyphicon.glyphicon-off
+      - else
+        = link_to 'Sign in', 'auth/google_oauth2'
