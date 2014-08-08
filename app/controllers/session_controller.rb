@@ -3,14 +3,15 @@ class SessionController < ApplicationController
   skip_before_action :authenticate
 
   def create
-    @operator = Operator.find_by(email: params[:email])
+    operator = OperatorAuthenticator.new(request.env['omniauth.auth']).model
 
-    if OperatorAuthenticator.new(@operator).authenticate(params[:password])
-      sign_in(@operator)
-      redirect_to root_path
+    if operator
+      sign_in(admin)
+      flash[:success] = 'Successfully authenticated from google-plus account.'
+      redirect_to :root
     else
-      flash[:danger] = "Login failed"
-      render :new
+      flash[:error] = 'Pleas finish registration'
+      redirect_to :root
     end
   end
 
