@@ -1,4 +1,7 @@
 class SessionController < ApplicationController
+  skip_before_action :fake_authenticate
+  skip_before_action :authenticate
+
   def create
     @operator = Operator.find_by(email: params[:email])
 
