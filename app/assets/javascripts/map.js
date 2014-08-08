@@ -25,7 +25,8 @@
                   lat: station.lat,
                   lng: station.lng,
                   title: station.name,
-                  content: '<div class="station_overlay"> <p>' + station.bikes_count + '</p> </div>'
+                  layer: 'overlayMouseTarget',
+                  content: '<div class="station_overlay" title="' + station.name + '"> <p>' + station.bikes_count + '</p> </div>'
                 });
               }
             }
