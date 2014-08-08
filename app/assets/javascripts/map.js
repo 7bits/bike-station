@@ -24,7 +24,10 @@
                 markers_pool.push({
                   lat: station.lat,
                   lng: station.lng,
-                  title: station.name
+                  title: station.name,
+                  infoWindow: {
+                    content: '<p>' + station.name + '</p> <p> Доступно велосипедов: ' + station.bikes_count + '</p>'
+                  }
                 });
               }
             }
