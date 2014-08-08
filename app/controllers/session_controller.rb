@@ -12,6 +12,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
-
+    sign_out
+    redirect_to :root
   end
 end
