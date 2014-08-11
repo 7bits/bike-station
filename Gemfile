@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 gem 'thin'
 gem 'pg'
@@ -43,3 +42,5 @@ gem 'rails_12factor', group: :production
 gem 'travis-lint', require: false
 gem 'coveralls', require: false
 gem 'gcm'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
