@@ -15,7 +15,7 @@ script:
 - bundle exec rspec spec/
 deploy:
   provider: heroku
-  app: smartbike
+  app: smart-bikes
   api_key:
     secure: BKMUHZ34pO56SdKDXiRV/RLepi0Zk+wmjv/HIyI11efukbWvMITlURsTMmN4vEJtroyqd1ppgGRYDmcQB6R93/6Jb2QF48M0BM0hhPhfFSTgYkFJqg9lOQ4Hwu0gPQq9rnhec0O4tO24mqbD2KLnBVzZZQDwUMfHo5Qc/mg1Mzg=
   run:
