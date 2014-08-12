@@ -8,6 +8,7 @@ gem 'virtus'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-vkontakte'
 
 gem 'slim-rails'
 gem 'sass-rails', '~> 4.0.3'

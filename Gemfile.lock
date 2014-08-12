@@ -71,6 +71,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.3)
     ffi (1.9.3-x86-mingw32)
     gcm (0.0.7)
       httparty
@@ -118,6 +119,10 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-vkontakte (1.3.2)
+      multi_json
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
@@ -250,6 +255,7 @@ DEPENDENCIES
   meta_request
   omniauth
   omniauth-google-oauth2
+  omniauth-vkontakte
   pg
   rails (= 4.1.4)
   rails-assets-gmaps
