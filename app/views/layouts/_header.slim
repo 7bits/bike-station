@@ -9,7 +9,6 @@
 
 nav.collapse.navbar-collapse.bar role="navigation"
   ul.nav.navbar-nav
-    li= link_to 'Stations', stations_path
     - breadcrumbs.each do |br|
       li= link_to br.name, br.url, class: br.klass
 
