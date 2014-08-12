@@ -21,3 +21,17 @@ div.station_overlay {
   text-align: center;
   vertical-align: middle;
 }
+
+.center {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+  }
+  .buttons {
+    margin: 0 auto;
+    width: 165px;
+  }
+}

@@ -1,1 +1,11 @@
-= link_to 'Sign in', 'auth/vkontakte'
+.center
+  = image_tag 'http://cs614926.vk.me/v614926738/90fc/_HDTHI3IshQ.jpg'
+  h1 Smart Bikes Console
+  - flash.each do |key, value|
+    - key = :success if key == :notice
+    = content_tag(:div, value, class: "alert alert-#{key}")
+  - if operator_signed_in?
+    .alert.alert-warning Successfully registration! Now wait for approving you account and reload page.
+  - else
+    .buttons
+      = link_to 'Sign in with Vkontakte', 'auth/vkontakte', class: 'btn btn-primary'

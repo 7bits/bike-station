@@ -12,7 +12,6 @@ class SessionController < ApplicationController
 
     if operator
       sign_in(operator)
-      flash[:success] = "Successfully authenticated from #{operator.provider} account."
       redirect_to :root
     else
       flash[:error] = 'Please finish registration'
