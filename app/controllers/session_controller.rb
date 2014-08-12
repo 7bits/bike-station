@@ -7,10 +7,10 @@ class SessionController < ApplicationController
 
     if operator
       sign_in(operator)
-      flash[:success] = 'Successfully authenticated from google-plus account.'
+      flash[:success] = "Successfully authenticated from #{operator.provider} account."
       redirect_to :root
     else
-      flash[:error] = 'Pleas finish registration'
+      flash[:error] = 'Please finish registration'
       redirect_to :root
     end
   end
