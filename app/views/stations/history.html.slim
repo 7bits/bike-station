@@ -1,0 +1,4 @@
+h1 Rent history
+ul
+  - @rents.each do |rent|
+    li= rent[:bike][:name] + " (" + rent[:user][:name] + " " + rent[:user][:surname] + ", " + rent[:rent][:time] + ")"
