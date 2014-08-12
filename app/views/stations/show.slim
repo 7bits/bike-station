@@ -1,1 +1,10 @@
-= @station.name
+.station-buttons
+  =link_to 'New rent', open_station_rents_path(@station), class: 'btn btn-default btn-lg'
+  =link_to 'Close rent', close_station_rents_path(@station), class: 'btn btn-default btn-lg'
+  =link_to 'History', history_station_path(@station), class: 'btn btn-default btn-lg'
+#map
+
+  javascript:
+    $(document).ready(function () {
+      Map.render();
+    });

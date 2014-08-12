@@ -10,11 +10,10 @@
         lat: "54.981629",
         lng: "73.368761"
       });
-      var markers_pool = [];
 
       $.ajax({
         type: 'GET',
-        url: 'api/v1/stations',
+        url: '/api/v1/stations',
         dataType: 'json',
         success: function(data) {
           if (data) {

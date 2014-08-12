@@ -1,13 +1,16 @@
 class RentsController < ApplicationController
   before_action :find_station
 
-  def index
-    @form = RentInput.new
+  def closing
     @rents = Rent.openned
   end
 
   def show
     @rent = Rent.find(params[:id])
+  end
+
+  def opening
+    @form = RentInput.new
   end
 
   def open
@@ -17,12 +20,12 @@ class RentsController < ApplicationController
     
     if @form.valid?
       rent = service.open_rent(@form, @station)
-      rent_presenter = RentPresenter.new(rent, :open)
+      rent_presenter = RentPresenter.new(rent, :new)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
-      redirect_to station_rents_path(@station)
+      redirect_to @station
     else
       @rents = Rent.openned # TODO: only for rendering errros. Replase method with ajax and remove it
-      render :index
+      render :closing
     end
   end
 

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   resources :stations do
     resources :rents do
+      get 'open', on: :collection, to: 'rents#opening'
+      get 'close', on: :collection, to: 'rents#closing'
       post 'open', on: :collection
-      post 'close', on: :member
+      patch 'close', on: :member
     end
     get 'history', on: :member
   end

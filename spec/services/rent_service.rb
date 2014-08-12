@@ -7,7 +7,7 @@ RSpec.describe RentService do
   it { should respond_to :open_rent }
   it { should respond_to :close_rent }
 
-  describe 'when open rent' do
+  describe 'when new rent' do
     it 'create rent in db' do
       expect(service.open_rent(user, bike)).to change { Rent.count }.by(1)
     end
