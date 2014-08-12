@@ -70,11 +70,14 @@ ALTER SEQUENCE bikes_id_seq OWNED BY bikes.id;
 
 CREATE TABLE operators (
     id integer NOT NULL,
-    email character varying(255) NOT NULL,
     authentication_token character varying(255),
     approved boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    uid character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    provider character varying(255),
+    url character varying(255)
 );
 
 
@@ -291,13 +294,6 @@ CREATE UNIQUE INDEX index_operators_on_authentication_token ON operators USING b
 
 
 --
--- Name: index_operators_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_operators_on_email ON operators USING btree (email);
-
-
---
 -- Name: index_rents_on_bike_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -347,4 +343,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140806103254');
 INSERT INTO schema_migrations (version) VALUES ('20140806154105');
 
 INSERT INTO schema_migrations (version) VALUES ('20140808054843');
+
+INSERT INTO schema_migrations (version) VALUES ('20140812035819');
 

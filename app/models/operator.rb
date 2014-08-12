@@ -1,3 +1,4 @@
 class Operator < ActiveRecord::Base
-  validates :email, uniqueness: true
+  validates :uid, uniqueness: true, presence: true
+  validates :name, presence: true
 end
