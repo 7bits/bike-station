@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post 'open', on: :collection
       post 'close', on: :member
     end
-    get 'history' => 'stations#history'
+    get 'history', on: :member
   end
 
   namespace :api do
