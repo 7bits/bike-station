@@ -16,8 +16,9 @@ class OperatorAuthenticator
   private
 
   def authenticate_operator
-    operator = Operator.find_or_create_by(uid: @auth_hash.info['uid'], provider: @auth_hash.provider)
+    operator = Operator.find_or_create_by(uid: @auth_hash.info['uid'], name: @auth_hash.info['name'], provider: @auth_hash.provider)
     operator.update_attributes authentication_token: @auth_hash.credentials['token'], url: select_url
+    Rails.logger.info operator.attributes
     operator
   end
 
