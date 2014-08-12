@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   delete 'auth/logout' => 'session#destroy'
   get 'login' => 'session#new'
 
-  root 'home#index'
+  root 'stations#index'
 
   resources :stations do
     resources :rents do

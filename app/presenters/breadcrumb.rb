@@ -1,0 +1,1 @@
+Breadcrumb = Struct.new(:name, :url, :klass)
