@@ -1,12 +1,13 @@
 class OperatorAuthenticator
-  DEV_UID = -1
+  DEV_UID = '-1'
+  DEV_NAME = 'Developer'
 
   attr_reader :auth_hash
 
   def initialize(auth_hash)
     @auth_hash = Rails.env.production? ?
       auth_hash :
-      Struct.new(:provider, :info, :credentials).new('fake', {'uid' => DEV_UID}, { 'token' => '111111'})
+      Struct.new(:provider, :uid, :info, :credentials).new('fake', DEV_UID, {'name' => DEV_NAME}, { 'token' => '111111'})
   end
 
   def model
@@ -23,7 +24,7 @@ class OperatorAuthenticator
   end
 
   def select_url
-    return 'fake.smart-bikes.ru' if @auth_hash.provider == 'fake'
+    return 'https://fake.smart-bikes.ru' if @auth_hash.provider == 'fake'
 
     if @auth_hash.provider == 'google_oauth2'
       @auth_hash.extra['raw_info']['profile']

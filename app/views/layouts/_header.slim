@@ -12,9 +12,7 @@ nav.collapse.navbar-collapse.bar role="navigation"
     li= link_to 'Stations', stations_path
 
   ul.nav.navbar-nav.navbar-right
-    li
-      - if operator_signed_in?
-        = link_to auth_logout_path, :method => :delete do
-          span.glyphicon.glyphicon-off
-      - else
-        = link_to 'Sign in', 'auth/vkontakte'
+    - if operator_signed_in?
+      li= link_to current_operator.name, current_operator.url
+      li= link_to auth_logout_path, :method => :delete do
+        span.glyphicon.glyphicon-off

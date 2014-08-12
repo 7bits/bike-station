@@ -1,6 +1,11 @@
 class SessionController < ApplicationController
   skip_before_action :fake_authenticate
   skip_before_action :authenticate
+  layout 'empty'
+
+  def new
+    redirect_to :root if operator_signed_in? && has_permissions?(current_operator)
+  end
 
   def create
     operator = OperatorAuthenticator.new(request.env['omniauth.auth']).model

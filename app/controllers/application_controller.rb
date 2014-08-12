@@ -21,11 +21,11 @@ class ApplicationController < ActionController::Base
     if current_operator
       unless has_permissions?(current_operator)
         flash[:warning] = 'Your account is not activated yet.'
-        redirect_to :root
+        redirect_to login_path
       end
     else
       flash[:danger] = 'You need to sign in or sign up before continuing.'
-      redirect_to :root
+      redirect_to login_path
     end
   end
 
