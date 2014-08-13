@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   def authenticate
     if current_operator
       unless has_permissions?(current_operator)
-        flash[:warning] = 'Your account is not activated yet.'
         redirect_to login_path
       end
     else
