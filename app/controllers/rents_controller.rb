@@ -3,6 +3,12 @@ class RentsController < ApplicationController
 
   def closing
     @rents = Rent.openned
+
+    @breadcrumbs = [
+        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
+        Breadcrumb.new('Close rent', close_station_rents_path(@station), 'active')
+    ]
   end
 
   def show
@@ -11,6 +17,12 @@ class RentsController < ApplicationController
 
   def opening
     @form = RentInput.new
+
+    @breadcrumbs = [
+        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
+        Breadcrumb.new('Open rent', open_station_rents_path(@station), 'active')
+    ]
   end
 
   def open
