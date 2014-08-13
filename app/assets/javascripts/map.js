@@ -4,11 +4,11 @@
   }
 
   window.Map = {
-    render: function() {
+    render: function(station_lat, station_lng) {
       var map = new GMaps({
         el: "#map",
-        lat: "54.981629",
-        lng: "73.368761"
+        lat: station_lat || "54.981629",
+        lng: station_lng || "73.368761"
       });
 
       $.ajax({
