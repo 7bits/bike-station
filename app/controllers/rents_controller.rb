@@ -52,7 +52,7 @@ class RentsController < ApplicationController
     else
       rent_presenter = RentPresenter.new(rent, :close)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
-      redirect_to station_rent_path(@station, rent)
+      redirect_to history_station_path(@station)
     end
   end
 
