@@ -26,6 +26,12 @@ class RentsController < ApplicationController
   end
 
   def open
+    @breadcrumbs = [
+        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
+        Breadcrumb.new('Open rent', open_station_rents_path(@station), 'active')
+    ]
+
     @form = RentInput.new open_rent_params
     service = RentService.new
     push_sender = PushSenderFactory.build
@@ -42,6 +48,12 @@ class RentsController < ApplicationController
   end
 
   def close
+    @breadcrumbs = [
+        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
+        Breadcrumb.new('Close rent', close_station_rents_path(@station), 'active')
+    ]
+
     service = RentService.new
     push_sender = PushSenderFactory.build
 
