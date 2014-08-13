@@ -145,7 +145,7 @@ CREATE TABLE rents (
     updated_at timestamp without time zone,
     terminal_station_id integer,
     starting_station_id integer NOT NULL,
-    rate_id integer NOT NULL
+    rate_id integer
 );
 
 
@@ -155,11 +155,20 @@ CREATE TABLE rents (
 
 CREATE VIEW rents_history AS
  SELECT count(*) AS count,
-    array_agg(rents.id) AS rents_ids,
-    (date_trunc('day'::text, ((rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval) AS day
-   FROM rents
-  WHERE (rents.closed_at IS NOT NULL)
-  GROUP BY (date_trunc('day'::text, ((rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval);
+    all_rents.station_id,
+    array_agg(all_rents.id) AS rents_ids,
+    ((date_trunc('day'::text, ((all_rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval))::date AS day
+   FROM ( SELECT rents.closed_at,
+            rents.id,
+            rents.terminal_station_id AS station_id
+           FROM rents
+        UNION
+         SELECT rents.closed_at,
+            rents.id,
+            rents.starting_station_id AS station_id
+           FROM rents) all_rents
+  WHERE (all_rents.closed_at IS NOT NULL)
+  GROUP BY ((date_trunc('day'::text, ((all_rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval))::date, all_rents.station_id;
 
 
 --

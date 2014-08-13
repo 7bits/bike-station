@@ -37,7 +37,7 @@ class RentsController < ApplicationController
       redirect_to @station
     else
       @rents = Rent.openned # TODO: only for rendering errros. Replase method with ajax and remove it
-      render :closing
+      render :opening
     end
   end
 

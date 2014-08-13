@@ -17,8 +17,8 @@ class StationsController < ApplicationController
   def history
     @station = Station.find params[:id]
 
-    rents = Rent.closed.for_station(@station.id)
-    @rents = RentBikesPresenter.wrap(rents)
+    histories = @station.rents_histories
+    @presenter = RentsHistoryPresenter.wrap(histories)
 
     @breadcrumbs = [
         Breadcrumb.new('Stations', stations_path, 'not-active'),

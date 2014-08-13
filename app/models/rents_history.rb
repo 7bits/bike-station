@@ -3,6 +3,8 @@ class RentsHistory < ActiveRecord::Base
   self.primary_key = 'day'
   default_scope { order 'day DESC' }
 
+  belongs_to :station
+
   def rents
     Rent.where('id IN (?)', self.rents_ids)
   end
