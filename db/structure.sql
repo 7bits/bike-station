@@ -101,6 +101,37 @@ ALTER SEQUENCE operators_id_seq OWNED BY operators.id;
 
 
 --
+-- Name: rates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE rates (
+    id integer NOT NULL,
+    name character varying(255),
+    price numeric,
+    closed_at timestamp without time zone
+);
+
+
+--
+-- Name: rates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE rates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE rates_id_seq OWNED BY rates.id;
+
+
+--
 -- Name: rents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -113,8 +144,22 @@ CREATE TABLE rents (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     terminal_station_id integer,
-    starting_station_id integer NOT NULL
+    starting_station_id integer NOT NULL,
+    rate_id integer NOT NULL
 );
+
+
+--
+-- Name: rents_history; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW rents_history AS
+ SELECT count(*) AS count,
+    array_agg(rents.id) AS rents_ids,
+    (date_trunc('day'::text, ((rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval) AS day
+   FROM rents
+  WHERE (rents.closed_at IS NOT NULL)
+  GROUP BY (date_trunc('day'::text, ((rents.closed_at)::timestamp with time zone - '00:00:00'::interval)) + '00:00:00'::interval);
 
 
 --
@@ -229,6 +274,13 @@ ALTER TABLE ONLY operators ALTER COLUMN id SET DEFAULT nextval('operators_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY rates ALTER COLUMN id SET DEFAULT nextval('rates_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY rents ALTER COLUMN id SET DEFAULT nextval('rents_id_seq'::regclass);
 
 
@@ -260,6 +312,14 @@ ALTER TABLE ONLY bikes
 
 ALTER TABLE ONLY operators
     ADD CONSTRAINT operators_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY rates
+    ADD CONSTRAINT rates_pkey PRIMARY KEY (id);
 
 
 --
@@ -345,4 +405,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140806154105');
 INSERT INTO schema_migrations (version) VALUES ('20140808054843');
 
 INSERT INTO schema_migrations (version) VALUES ('20140812035819');
+
+INSERT INTO schema_migrations (version) VALUES ('20140813060032');
+
+INSERT INTO schema_migrations (version) VALUES ('20140813061024');
+
+INSERT INTO schema_migrations (version) VALUES ('20140813062656');
 
