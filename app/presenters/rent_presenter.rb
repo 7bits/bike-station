@@ -1,8 +1,9 @@
 class RentPresenter
-  attr_reader :rent, :code
+  attr_reader :rent, :cost, :code
 
-  def initialize(rent, code)
+  def initialize(rent, cost, code)
     @rent = rent
+    @cost = cost
     @code = code
   end 
 
@@ -12,7 +13,7 @@ class RentPresenter
         openned_at: rent.openned_at, 
         closed_at: rent.closed_at,
         cost: rent.rate.price,
-        total_cost: 100
+        total_cost: cost
       },
       user: {
         id: rent.user.id,

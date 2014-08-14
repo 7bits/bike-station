@@ -38,7 +38,7 @@ class RentsController < ApplicationController
     
     if @form.valid?
       rent = service.open_rent(@form, @station)
-      rent_presenter = RentPresenter.new(rent, :new)
+      rent_presenter = RentPresenter.new(rent, 0, :new)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to @station
     else
@@ -62,7 +62,10 @@ class RentsController < ApplicationController
       flash[:danger] = "Can't close rent."
       redirect_to station_rents_path(@station)
     else
-      rent_presenter = RentPresenter.new(rent, :close)
+      cost_counter = CostCounter.new
+      rent_time = cost_counter.calculate_time(rent.openned_at, rent.closed_at)
+      cost = cost_counter.calculate_cost(rent.rate.price, rent_time)
+      rent_presenter = RentPresenter.new(rent, cost, :close)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to history_station_path(@station)
     end
