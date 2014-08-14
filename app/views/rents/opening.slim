@@ -14,6 +14,11 @@
       =u.label 'Surname', class: 'col-sm-2 control-label'
       .col-sm-10  
         = u.text_field :surname, class: 'form-control'
+    .form-group
+       = u.label :photo, class: 'col-sm-2 control-label'
+       .col-sm-10
+         = u.file_field :photo, accept: 'image/*;capture=camera'
+
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit 'Open rent', class: 'btn btn-default'

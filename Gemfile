@@ -5,6 +5,7 @@ gem 'rails', '4.1.4'
 gem 'thin'
 gem 'pg'
 gem 'virtus'
+gem 'carrierwave'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

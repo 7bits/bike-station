@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :surname, presence: true
+  mount_uploader :photo, PhotoUploader
 end

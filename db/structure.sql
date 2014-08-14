@@ -242,7 +242,8 @@ CREATE TABLE users (
     name character varying(255),
     surname character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    photo character varying(255)
 );
 
 
@@ -420,4 +421,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140813060032');
 INSERT INTO schema_migrations (version) VALUES ('20140813061024');
 
 INSERT INTO schema_migrations (version) VALUES ('20140813062656');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814061813');
 

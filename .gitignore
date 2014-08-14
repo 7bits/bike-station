@@ -17,6 +17,7 @@ pickle-email-*.html
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+/public/uploads
 
 # Folder config file
 Desktop.ini
