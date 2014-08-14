@@ -15,4 +15,6 @@ table.table.table-hover
         td= rent.openned_at
         td= rent.starting_station.name
         td= rent.bike.name
-        td= link_to 'Close', close_station_rent_path(@station, rent), method: :patch, class: 'btn btn-default'
+        td
+          =link_to 'Close', close_station_rent_path(@station, rent), method: :patch, class: 'btn btn-default'
+          =link_to 'Photo', rent.user.photo.try(:url), class: 'btn'
