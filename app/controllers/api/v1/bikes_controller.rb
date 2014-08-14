@@ -21,4 +21,8 @@ class Api::V1::BikesController < ActionController::Base
     
     render json: {message: 'Successfull registration'}, status: :ok
   end
+
+  def location
+    render json: {}, status: :ok
+  end
 end
