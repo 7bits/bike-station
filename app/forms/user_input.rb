@@ -3,5 +3,5 @@ class UserInput < Input
   attribute :surname, String
   attribute :photo
 
-  validates_presence_of :name, :surname, :photo
+  validates_presence_of :name, :surname
 end
