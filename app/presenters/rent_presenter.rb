@@ -11,7 +11,7 @@ class RentPresenter
       rent: {
         openned_at: rent.openned_at, 
         closed_at: rent.closed_at,
-        cost: rent.rate.price,
+        cost: 10,
         total_cost: 100
       },
       user: {
