@@ -22,7 +22,20 @@ class Api::V1::BikesController < ActionController::Base
     render json: {message: 'Successfull registration'}, status: :ok
   end
 
+  def locations
+    locations = Location.all
+    presenter = LocationPresenter.wrap(locations)
+
+    render json: {locations: presenter}, status: :ok
+  end
+
   def location
+    bike = Bike.find_by uuid: params[:uuid]
+
+    if bike
+      bike.bike_locations.create(lat: params[:lat], lng: params[:lng], date: DateTime.now)
+    end
+
     render json: {}, status: :ok
   end
 end

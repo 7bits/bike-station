@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       post 'bikes/register' => 'bikes#register'
       get 'stations' => 'stations#index'
       post 'bikes/:uuid/location' => 'bikes#location'
+      get 'bikes/locations' => 'bikes#locations'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

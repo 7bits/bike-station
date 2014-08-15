@@ -30,6 +30,40 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: bike_locations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE bike_locations (
+    id integer NOT NULL,
+    bike_id integer,
+    lat numeric,
+    lng numeric,
+    date timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: bike_locations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE bike_locations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bike_locations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE bike_locations_id_seq OWNED BY bike_locations.id;
+
+
+--
 -- Name: bikes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -62,6 +96,22 @@ CREATE SEQUENCE bikes_id_seq
 --
 
 ALTER SEQUENCE bikes_id_seq OWNED BY bikes.id;
+
+
+--
+-- Name: locations; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW locations AS
+ SELECT bike_locations.bike_id,
+    bike_locations.lat,
+    bike_locations.lng,
+    dates.date
+   FROM bike_locations,
+    ( SELECT min(bike_locations_1.date) AS date
+           FROM bike_locations bike_locations_1
+          GROUP BY bike_locations_1.bike_id) dates
+  WHERE (dates.date = bike_locations.date);
 
 
 --
@@ -270,6 +320,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY bike_locations ALTER COLUMN id SET DEFAULT nextval('bike_locations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY bikes ALTER COLUMN id SET DEFAULT nextval('bikes_id_seq'::regclass);
 
 
@@ -306,6 +363,14 @@ ALTER TABLE ONLY stations ALTER COLUMN id SET DEFAULT nextval('stations_id_seq':
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: bike_locations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY bike_locations
+    ADD CONSTRAINT bike_locations_pkey PRIMARY KEY (id);
 
 
 --
@@ -354,6 +419,13 @@ ALTER TABLE ONLY stations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_bike_locations_on_bike_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_bike_locations_on_bike_id ON bike_locations USING btree (bike_id);
 
 
 --
@@ -425,4 +497,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140813062656');
 INSERT INTO schema_migrations (version) VALUES ('20140814061813');
 
 INSERT INTO schema_migrations (version) VALUES ('20140815045506');
+
+INSERT INTO schema_migrations (version) VALUES ('20140815062053');
+
+INSERT INTO schema_migrations (version) VALUES ('20140815064600');
 
