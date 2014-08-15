@@ -107,7 +107,7 @@ ALTER SEQUENCE operators_id_seq OWNED BY operators.id;
 CREATE TABLE rates (
     id integer NOT NULL,
     name character varying(255),
-    price numeric,
+    price integer,
     closed_at timestamp without time zone
 );
 
@@ -423,4 +423,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140813061024');
 INSERT INTO schema_migrations (version) VALUES ('20140813062656');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814061813');
+
+INSERT INTO schema_migrations (version) VALUES ('20140815045506');
 
