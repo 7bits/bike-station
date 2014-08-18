@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'bikes/register' => 'bikes#register'
       get 'stations' => 'stations#index'
+      get 'stations/map' => 'stations#map', as: :stations_map
       post 'bikes/:uuid/location' => 'bikes#location'
       get 'bikes/locations' => 'bikes#locations'
     end

@@ -13,7 +13,7 @@
 
       $.ajax({
         type: 'GET',
-        url: '/api/v1/stations',
+        url: '/api/v1/stations/map',
         dataType: 'json',
         success: function(data) {
           if (data) {
