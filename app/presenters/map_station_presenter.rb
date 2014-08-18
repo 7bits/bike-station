@@ -11,7 +11,7 @@ class MapStationPresenter
       lat: station.latitude, 
       lng: station.longitude, 
       name: station.name,
-      bikes_count: station.bikes.count
+      bikes_count: station.bikes.unused.count
     }
   end
 
