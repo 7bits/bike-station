@@ -5,7 +5,7 @@ class Rent < ActiveRecord::Base
   belongs_to :starting_station, class_name: 'Station', foreign_key: 'starting_station_id'
   belongs_to :terminal_station, class_name: 'Station', foreign_key: 'terminal_station_id'
 
-  default_scope { order 'openned_at' }
+  default_scope { order 'closed_at' }
   scope :openned, -> { where closed_at: nil }
   scope :closed, -> { where.not closed_at: nil }
   scope :for_station, ->(station_id) {
