@@ -27,7 +27,7 @@ class OperatorAuthenticator
           authentication_token: @auth_hash.credentials['token'],
           url: select_url)
       operator.generate_token
-      AdminMailer.new_operator_registration(operator).deliver
+      AdminMailer.new_operator_registration(operator.reload).deliver
     else
       operator.update_attributes authentication_token: @auth_hash.credentials['token'], url: select_url
     end
