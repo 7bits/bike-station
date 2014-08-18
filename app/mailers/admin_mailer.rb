@@ -4,7 +4,6 @@ class AdminMailer < ActionMailer::Base
 
   def new_operator_registration(operator)
     @operator = operator
-    @activation_url = activate_operator_url(id: @operator.id, token: @operator.token)
     mail(subject: "New operator: #{@operator.name}")
   end
 end
