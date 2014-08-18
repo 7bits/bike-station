@@ -10,6 +10,7 @@ User.destroy_all
 Station.destroy_all
 Bike.destroy_all
 Rate.destroy_all
+Admin.destroy_all
 
 station_1 = Station.create(name: 'Иртышская набережная', latitude: 54.968094, longitude: 73.378906, gates_count: 10)
 station_2 = Station.create(name: 'Омская крепость', latitude: 54.982530, longitude: 73.370534, gates_count: 10)
@@ -23,3 +24,5 @@ bike_3 = Bike.create(name: 'default_3', station: station_2, uuid: '0d641816-faa3
 bike_4 = Bike.create(name: 'default_4', station: station_2, uuid: '9b65ab96-7266-437c-b10d-d992979e4658')
 
 rate_1 = Rate.create(name: 'Тариф "Спортивный"', price: 10)
+
+Admin.create(email: 'verify-operators@smart-bikes.ru')

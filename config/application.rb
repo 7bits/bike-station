@@ -34,5 +34,18 @@ module SmartBike
       g.javascripts false
     end
     config.active_record.schema_format = :sql
+
+    config.action_mailer.default_url_options = { host: 'console.smart-bikes.ru' }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default :charset => 'utf-8'
+    config.action_mailer.smtp_settings = {
+        :address              => 'smtp.yandex.ru',
+        :port                 => 25,
+        :domain               => 'smart-bikes.ru',
+        :user_name            => Rails.application.secrets.mail_user_name,
+        :password             => Rails.application.secrets.mail_user_pwd,
+        :authentication       => :login,
+        :enable_starttls_auto => true
+    }
   end
 end

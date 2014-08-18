@@ -30,6 +30,37 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: admins; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE admins (
+    id integer NOT NULL,
+    email character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: admins_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE admins_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: admins_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE admins_id_seq OWNED BY admins.id;
+
+
+--
 -- Name: bike_locations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -320,6 +351,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY admins ALTER COLUMN id SET DEFAULT nextval('admins_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY bike_locations ALTER COLUMN id SET DEFAULT nextval('bike_locations_id_seq'::regclass);
 
 
@@ -363,6 +401,14 @@ ALTER TABLE ONLY stations ALTER COLUMN id SET DEFAULT nextval('stations_id_seq':
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: admins_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY admins
+    ADD CONSTRAINT admins_pkey PRIMARY KEY (id);
 
 
 --
@@ -501,4 +547,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140815045506');
 INSERT INTO schema_migrations (version) VALUES ('20140815062053');
 
 INSERT INTO schema_migrations (version) VALUES ('20140815064600');
+
+INSERT INTO schema_migrations (version) VALUES ('20140818062217');
 
