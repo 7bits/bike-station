@@ -50,10 +50,16 @@ a.not-active {
     width: 165px;
   }
 }
-
-.station-buttons {
-  margin-bottom: 15px;
-  .btn {
-    margin-right: 20px;
+.station-header {
+  .station-buttons {
+    display: inline-block;
+    margin-bottom: 15px;
+    display: inline-block;
+    .btn {
+      margin-right: 20px;
+    }
+  }
+  .total-cost {
+    display: inline-block;
   }
 }

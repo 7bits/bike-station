@@ -63,8 +63,7 @@ class RentsController < ApplicationController
       redirect_to station_rents_path(@station)
     else
       cost_counter = CostCounter.new
-      rent_time = cost_counter.calculate_time(rent.openned_at, rent.closed_at)
-      cost = cost_counter.calculate_cost(rent.rate.price, rent_time)
+      cost = cost_counter.calculate_cost(rent)
       rent_presenter = RentPresenter.new(rent, cost, :close)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to history_station_path(@station)

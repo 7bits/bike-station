@@ -1,10 +1,12 @@
 class CostCounter
-  def calculate_cost(price, unit)
-    cost = price * unit
-    cost
+  def calculate_cost(rent)
+    (rent.rate.price * rent.duration).round
   end
 
-  def calculate_time(openned_at, closed_at)
-    time = ((closed_at - openned_at) / 60).to_i  # minutes
+  # TODO: make calculations on sql server
+  def calculate_total_cost(station)
+    station.incoming_rents.map do |rent|
+      calculate_cost(rent)
+    end.inject(&:+) || 0
   end
 end

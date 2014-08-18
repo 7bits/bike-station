@@ -1,7 +1,12 @@
-.station-buttons
-  =link_to 'New rent', open_station_rents_path(@station), class: 'btn btn-default btn-lg'
-  =link_to 'Close rent', close_station_rents_path(@station), class: 'btn btn-default btn-lg'
-  =link_to 'History', history_station_path(@station), class: 'btn btn-default btn-lg'
+.station-header
+  .station-buttons
+    =link_to 'New rent', open_station_rents_path(@station), class: 'btn btn-default btn-lg'
+    =link_to 'Close rent', close_station_rents_path(@station), class: 'btn btn-default btn-lg'
+    =link_to 'History', history_station_path(@station), class: 'btn btn-default btn-lg'
+
+  .total-cost
+    p= "Today + #{@total_cost}"
+
 #map
 
   javascript:

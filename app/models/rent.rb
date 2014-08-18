@@ -11,4 +11,8 @@ class Rent < ActiveRecord::Base
   scope :for_station, ->(station_id) {
     where('starting_station_id = :station_id OR terminal_station_id = :station_id', station_id: station_id )
   }
+
+  def duration
+    (closed_at - openned_at) / 60  # minutes
+  end
 end
