@@ -17,9 +17,15 @@ class OperatorAuthenticator
   private
 
   def authenticate_operator
-    operator = Operator.find_or_create_by(uid: @auth_hash.uid, name: @auth_hash.info['name'], provider: @auth_hash.provider)
+    should_send_email = false
+    operator = Operator.find_or_create_by(uid: @auth_hash.uid, name: @auth_hash.info['name'], provider: @auth_hash.provider) do |o|
+      should_send_email = true
+    end
     operator.update_attributes authentication_token: @auth_hash.credentials['token'], url: select_url
+    operator.generate_token
     Rails.logger.info operator.attributes
+
+    AdminMailer.new_operator_registration(operator).deliver if should_send_email
     operator
   end
 

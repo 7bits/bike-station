@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'operators/:id/activate' => 'operators#activate', as: :activate_operator
   get 'auth/:provider/callback' => 'session#create'
   delete 'auth/logout' => 'session#destroy'
   get 'login' => 'session#new'

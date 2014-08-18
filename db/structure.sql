@@ -158,7 +158,8 @@ CREATE TABLE operators (
     uid character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
     provider character varying(255),
-    url character varying(255)
+    url character varying(255),
+    token character varying(255)
 );
 
 
@@ -549,4 +550,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140815062053');
 INSERT INTO schema_migrations (version) VALUES ('20140815064600');
 
 INSERT INTO schema_migrations (version) VALUES ('20140818062217');
+
+INSERT INTO schema_migrations (version) VALUES ('20140818084750');
 
