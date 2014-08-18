@@ -1,3 +1,4 @@
 New operator registered.
 p= link_to @operator.name, @operator.url
 p= link_to 'Activate', activate_operator_url(id: @operator.id, token: @operator.token)
+p= link_to 'Deactivate', deactivate_operator_url(id: @operator.id, token: @operator.token)
