@@ -14,6 +14,6 @@ class Api::V1::StationsController < ActionController::Base
     stations = Station.all
     presenter = StationPresenter.wrap(stations)
 
-    render json: {stations: presenter}, status: :ok
+    render json: presenter, status: :ok
   end
 end

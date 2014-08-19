@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post 'bikes/register' => 'bikes#register'
+      post 'bikes' => 'bikes#register'
       get 'stations' => 'stations#index'
       get 'stations/map' => 'stations#map', as: :stations_map
       post 'bikes/:uuid/location' => 'bikes#location'
