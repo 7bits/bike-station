@@ -139,7 +139,7 @@ CREATE VIEW locations AS
     bike_locations.lng,
     dates.date
    FROM bike_locations,
-    ( SELECT min(bike_locations_1.date) AS date
+    ( SELECT max(bike_locations_1.date) AS date
            FROM bike_locations bike_locations_1
           GROUP BY bike_locations_1.bike_id) dates
   WHERE (dates.date = bike_locations.date);
@@ -552,4 +552,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140815064600');
 INSERT INTO schema_migrations (version) VALUES ('20140818062217');
 
 INSERT INTO schema_migrations (version) VALUES ('20140818084750');
+
+INSERT INTO schema_migrations (version) VALUES ('20140819045147');
 
