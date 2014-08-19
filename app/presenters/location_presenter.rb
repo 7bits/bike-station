@@ -6,7 +6,7 @@ class LocationPresenter
   end
 
   def wrap
-    {lat: location.lat, lng: location.lng, bike_id: location.bike_id}
+    {lat: location.lat, lng: location.lng, bike_id: location.bike_id, station_id: location.station_id}
   end
 
   def self.wrap(locations)
