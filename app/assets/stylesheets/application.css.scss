@@ -63,3 +63,19 @@ a.not-active {
     display: inline-block;
   }
 }
+
+@media only screen and (max-width: $screen-xs) {
+  .station-header {
+    .station-buttons {
+      .btn {
+        display: block;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+    }
+    .total-cost {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}
