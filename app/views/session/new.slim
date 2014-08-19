@@ -1,11 +1,11 @@
 .center
   = image_tag 'logo.png'
-  h1 Smart Bikes Console
+  h1.white Smart Bikes Console
   - flash.each do |key, value|
     - key = :success if key == :notice
     = content_tag(:div, value, class: "alert alert-#{key}")
   - if operator_signed_in?
-    .alert.alert-warning Successfully registration! Now wait for approving you account and reload page.
+    .alert.alert-alpha Successfully registration! Now wait for approving you account and reload page.
   - else
     .buttons
       = link_to 'Sign in with Vkontakte', 'auth/vkontakte', class: 'btn btn-primary'

@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
       end
     else
-      flash[:danger] = 'You need to sign in before continuing.'
       redirect_to login_path
     end
   end

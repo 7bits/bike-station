@@ -79,3 +79,21 @@ a.not-active {
     }
   }
 }
+
+body.background {
+  background: asset_url('login_picture.jpg') center;
+  background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.alert.alert-alpha {
+  background-color: rgba(0,0,0,0.70);
+  color: #FFFFFF;
+  border-color: #0198A1;
+}
