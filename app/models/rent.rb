@@ -11,6 +11,7 @@ class Rent < ActiveRecord::Base
   scope :for_station, ->(station_id) {
     where('starting_station_id = :station_id OR terminal_station_id = :station_id', station_id: station_id )
   }
+  scope :today, -> {where "DATE_TRUNC('day', (closed_at::timestamptz - INTERVAL '0 hour'))::date = ?", Date.today}
 
   def duration
     (closed_at - openned_at) / 60  # minutes
