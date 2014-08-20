@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "login_page";
+@import "footer";
+
+/* Sticky footer styles
+-------------------------------------------------- */
 
 body {
   padding-top: 60px;
@@ -22,9 +27,9 @@ div.station_overlay {
   vertical-align: middle;
 }
 
-div.bike_overlay {
-  width: 15px;
-  height: 15px;
+div.my_bike_overlay {
+  width: 61px;
+  height: 32px;
   opacity: 0.7;
   border-radius: 8px;
   background-color: #004e78;
@@ -32,24 +37,22 @@ div.bike_overlay {
   font-size: 10pt;
   text-align: center;
   vertical-align: middle;
+  background: asset_url('bike_my.png');
 }
 
-a.not-active {
-  color: #428bca !important;
+div.other_bike_overlay {
+  width: 61px;
+  height: 32px;
+  opacity: 0.7;
+  border-radius: 8px;
+  background-color: #004e78;
+  color: #FFFFFF;
+  font-size: 10pt;
+  text-align: center;
+  vertical-align: middle;
+  background: asset_url('bike_other.png');
 }
-.center {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-  h1 {
-    text-align: center;
-  }
-  .buttons {
-    margin: 0 auto;
-    width: 165px;
-  }
-}
+
 .station-header {
   .station-buttons {
     display: inline-block;
@@ -78,22 +81,4 @@ a.not-active {
       margin-bottom: 10px;
     }
   }
-}
-
-body.background {
-  background: asset_url('login_picture.jpg') center;
-  background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-}
-
-.white {
-  color: #FFFFFF;
-}
-
-.alert.alert-alpha {
-  background-color: rgba(0,0,0,0.70);
-  color: #FFFFFF;
-  border-color: #0198A1;
 }
