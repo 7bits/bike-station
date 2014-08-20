@@ -22,9 +22,9 @@ div.station_overlay {
   vertical-align: middle;
 }
 
-div.bike_overlay {
-  width: 15px;
-  height: 15px;
+div.my_bike_overlay {
+  width: 61px;
+  height: 32px;
   opacity: 0.7;
   border-radius: 8px;
   background-color: #004e78;
@@ -32,6 +32,20 @@ div.bike_overlay {
   font-size: 10pt;
   text-align: center;
   vertical-align: middle;
+  background: url('/assets/bike_my.png');
+}
+
+div.other_bike_overlay {
+  width: 61px;
+  height: 32px;
+  opacity: 0.7;
+  border-radius: 8px;
+  background-color: #004e78;
+  color: #FFFFFF;
+  font-size: 10pt;
+  text-align: center;
+  vertical-align: middle;
+  background: url('/assets/bike_other.png');
 }
 
 a.not-active {
