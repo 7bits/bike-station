@@ -13,13 +13,15 @@ class Api::V1::BikesController < ActionController::Base
 
     begin
       service.register!(input)
-    rescue BikeNotFound => ex
+    rescue BikeRegistrator::BikeNotFound => ex
       render json: {message: 'Bike not found'}, status: :not_found and return
-    rescue BikeRegistrationError => ex
+    rescue BikeRegistrator::StationNotFound => ex
+      render json: {message: 'Station not found'}, status: :not_found and return
+    rescue BikeRegistrator::BikeRegistrationError => ex
       render json: {message: ex.message}, status: :unprocessable_entity and return
     end
     
-    render json: {message: 'Successfull registration'}, status: :ok
+    render json: {message: 'Successful registration'}, status: :ok
   end
 
   def locations

@@ -1,6 +1,6 @@
 class Api::V1::StationsController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
   respond_to :json
 
   def map
@@ -14,6 +14,6 @@ class Api::V1::StationsController < ActionController::Base
     stations = Station.all
     presenter = StationPresenter.wrap(stations)
 
-    render json: {stations: presenter}, status: :ok
+    render json: presenter, status: :ok
   end
 end
