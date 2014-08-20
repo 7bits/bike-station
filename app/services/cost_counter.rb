@@ -1,6 +1,6 @@
 class CostCounter
   def calculate_cost(rent)
-    (rent.rate.price * rent.duration).round
+    (rent.rate.price * rent.duration).ceil
   end
 
   # TODO: make calculations on sql server
