@@ -32,7 +32,7 @@ div.my_bike_overlay {
   font-size: 10pt;
   text-align: center;
   vertical-align: middle;
-  background: url('/assets/bike_my.png');
+  background: asset_url('bike_my.png');
 }
 
 div.other_bike_overlay {
@@ -45,7 +45,7 @@ div.other_bike_overlay {
   font-size: 10pt;
   text-align: center;
   vertical-align: middle;
-  background: url('/assets/bike_other.png');
+  background: asset_url('bike_other.png');
 }
 
 a.not-active {
