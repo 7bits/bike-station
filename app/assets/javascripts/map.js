@@ -28,10 +28,14 @@
               return bike_overlay.bike_id;
             });
             if (present_bike_ids.indexOf(location.bike_id) == -1) {
+              content = '<div class="other_bike_overlay"/>'
+              if (location.station_id == station_id) {
+                content = '<div class="my_bike_overlay"/>'
+              };
               overlay = map.drawOverlay({
                 lat: location.lat,
                 lng: location.lng,
-                content: '<div class="bike_overlay"/>'
+                content: content
               });
               bikes_overlays.push({
                 bike_id: location.bike_id,
@@ -46,12 +50,17 @@
                 if ( bike_overlay.lat != location.lat
                   || bike_overlay.lng != location.lng) {
 
+                  content = '<div class="other_bike_overlay"/>'
+                  if (location.station_id == station_id) {
+                    content = '<div class="my_bike_overlay"/>'
+                  };
+
                   map.removeOverlay(bike_overlay.overlay);
 
                   bike_overlay.overlay = map.drawOverlay({
                     lat: location.lat,
                     lng: location.lng,
-                    content: '<div class="bike_overlay"/>'
+                    content: content
                   });
                   bike_overlay.lat = location.lat;
                   bike_overlay.lng = location.lng;
