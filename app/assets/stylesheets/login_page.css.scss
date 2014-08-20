@@ -1,0 +1,38 @@
+body {
+  padding-top: 60px;
+}
+
+a.not-active {
+  color: #428bca !important;
+}
+.center {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+  }
+  .buttons {
+    margin: 0 auto;
+    width: 165px;
+  }
+}
+
+body.background {
+  background: asset_url('login_picture.jpg') center;
+  background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.alert.alert-alpha {
+  background-color: rgba(0,0,0,0.70);
+  color: #FFFFFF;
+  border-color: #0198A1;
+}

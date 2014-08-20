@@ -1,5 +1,5 @@
 doctype html
-html
+html.main
   head
     title
       | SmartBike | 
@@ -23,4 +23,11 @@ html
         = content_tag(:div, value, class: "alert alert-#{key}")
 
       == yield
+
+    .footer
+      .container
+        p.text-muted 
+          | &copy; 
+          = link_to 'SmartBikes', 'http://smart-bikes.ru'
+          | , 2014
       
