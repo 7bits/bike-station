@@ -12,7 +12,7 @@ table.table.table-hover
       tr
         td= rent.user.name
         td= rent.user.surname
-        td= rent.openned_at.to_formatted_s(:short)
+        td= l rent.openned_at, format: :short
         td= rent.starting_station.name
         td= rent.bike.name
         td

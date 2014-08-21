@@ -20,6 +20,8 @@ ru:
   today: Сегодня
   today_cost: Выручка за сегодня
   time:
+    formats:
+      short: ! '%d %B, %H:%M'
     days:
       one: день
       few: дня
@@ -58,3 +60,7 @@ ru:
       rent: Аренда
     attributes:
       name: Имя
+
+  date:
+    formats: 
+      short: ! '%-d %B'
