@@ -10,6 +10,15 @@ body {
   padding-top: 60px;
 }
 
+a.not-active {
+  color: #428bca !important;
+}
+
+a.active {
+  color: #428bca !important;
+  font-weight: bold; 
+}
+
 #map {
   width:100%;
   height:500px;
