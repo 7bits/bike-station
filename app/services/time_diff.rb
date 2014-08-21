@@ -1,18 +1,39 @@
 class TimeDiff
+
+  def plural_form(number)
+    if (number % 100).between?(10, 15)
+      return 'many'
+    end
+    case number % 10
+    when 1
+      return 'one'
+    when 2..4
+      return 'few'
+    end
+    return 'many'
+  end
+
   def diff(from, to)
     secs  = (to - from).to_i
     mins  = secs / 60
     hours = mins / 60
     days  = hours / 24
 
+    days_form = I18n.t 'time.days.' + plural_form(days)
+    hours_form = I18n.t 'time.hours.' + plural_form(hours % 24)
+    minutes_form = I18n.t 'time.minutes.' + plural_form(mins % 60)
+    seconds_form = I18n.t 'time.seconds.' + plural_form(secs % 60)
+
+    word_and = I18n.t :'and'
+
     if days > 0
-      "#{days} days and #{hours % 24} hours"
+      "#{days} #{days_form} #{word_and} #{hours % 24} #{hours_form}"
     elsif hours > 0
-      "#{hours} hours and #{mins % 60} minutes"
+      "#{hours} #{hours_form} #{word_and} #{mins % 60} #{minutes_form}"
     elsif mins > 0
-      "#{mins} minutes and #{secs % 60} seconds"
+      "#{mins} #{minutes_form} #{word_and} #{secs % 60} #{seconds_form}"
     elsif secs >= 0
-      "#{secs} seconds"
+      "#{secs} #{seconds_form}"
     end
   end
 end

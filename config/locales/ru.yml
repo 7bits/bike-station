@@ -18,3 +18,21 @@ ru:
     free: Свободно мест
   opened_at: Дата открытия
   today: Сегодня
+  time:
+    days:
+      one: день
+      few: дня
+      many: дней
+    hours:
+      one: час
+      few: часа
+      many: часов
+    minutes:
+      one: минута
+      few: минуты
+      many: минут
+    seconds:
+      one: секунда
+      few: секунды
+      many: секунд
+  and: и
