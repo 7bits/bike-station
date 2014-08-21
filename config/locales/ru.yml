@@ -1,0 +1,20 @@
+ru:
+  rent:
+    open: Открыть аренду
+    close: Закрыть аренду
+  bike: Велосипед
+  bikes:
+    free: Свободно велосипедов
+  name: Имя
+  surname: Фамилия
+  photo: Фото
+  stations: Станции
+  station:
+    starting: Начальная станция
+    select: Выберите станцию
+  history: История
+  close: Закрыть
+  gates:
+    free: Свободно мест
+  opened_at: Дата открытия
+  today: Сегодня

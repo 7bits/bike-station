@@ -1,11 +1,11 @@
 table.table.table-hover
   thead
     tr
-      th Name
-      th Surname
-      th Openned At
-      th Starting station
-      th Bike
+      th =t('name')
+      th =t('surname')
+      th =t('opened_at')
+      th =t('station.starting')
+      th =t('bike')
       th 
   tbody
     - @rents.each do |rent|
@@ -16,5 +16,5 @@ table.table.table-hover
         td= rent.starting_station.name
         td= rent.bike.name
         td
-          =link_to 'Close', close_station_rent_path(@station, rent), method: :patch, class: 'btn btn-default'
-          =link_to 'Photo', rent.user.photo.try(:url), class: 'btn'
+          =link_to t('close'), close_station_rent_path(@station, rent), method: :patch, class: 'btn btn-default'
+          =link_to t('photo'), rent.user.photo.try(:url), class: 'btn'

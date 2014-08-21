@@ -5,9 +5,9 @@ class RentsController < ApplicationController
     @rents = Rent.openned
 
     @breadcrumbs = [
-        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(t('stations'), stations_path, 'not-active'),
         Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
-        Breadcrumb.new('Close rent', close_station_rents_path(@station), 'active')
+        Breadcrumb.new(t('rent.close'), close_station_rents_path(@station), 'active')
     ]
   end
 
@@ -19,17 +19,17 @@ class RentsController < ApplicationController
     @form = RentInput.new
 
     @breadcrumbs = [
-        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(t('stations'), stations_path, 'not-active'),
         Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
-        Breadcrumb.new('Open rent', open_station_rents_path(@station), 'active')
+        Breadcrumb.new(t('rent.open'), open_station_rents_path(@station), 'active')
     ]
   end
 
   def open
     @breadcrumbs = [
-        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(t('stations'), stations_path, 'not-active'),
         Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
-        Breadcrumb.new('Open rent', open_station_rents_path(@station), 'active')
+        Breadcrumb.new(t('rent.open'), open_station_rents_path(@station), 'active')
     ]
 
     @form = RentInput.new open_rent_params
@@ -49,9 +49,9 @@ class RentsController < ApplicationController
 
   def close
     @breadcrumbs = [
-        Breadcrumb.new('Stations', stations_path, 'not-active'),
+        Breadcrumb.new(t('stations'), stations_path, 'not-active'),
         Breadcrumb.new(@station.name, station_path(@station), 'not-active'),
-        Breadcrumb.new('Close rent', close_station_rents_path(@station), 'active')
+        Breadcrumb.new(t('rent.close'), close_station_rents_path(@station), 'active')
     ]
 
     service = RentService.new

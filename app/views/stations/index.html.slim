@@ -1,10 +1,10 @@
-h1 Select station
+h1 =t('station.select')
 table.table.table-hover
   thead
     tr
-      th Name
-      th Free bikes
-      th Free gates
+      th =t('name')
+      th =t('bikes.free')
+      th =t('gates.free')
       th
   tbody
     - @stations.each do |station|
