@@ -28,29 +28,19 @@ div.station_overlay {
 }
 
 div.my_bike_overlay {
-  width: 61px;
-  height: 32px;
+  width: 46px;
+  height: 24px;
   opacity: 0.7;
-  border-radius: 8px;
-  background-color: #004e78;
-  color: #FFFFFF;
-  font-size: 10pt;
-  text-align: center;
-  vertical-align: middle;
-  background: asset_url('bike_my.png');
+  background: asset_url('bike_my.png') center no-repeat;
+  background-size: cover;
 }
 
 div.other_bike_overlay {
-  width: 61px;
-  height: 32px;
+  width: 46px;
+  height: 24px;
   opacity: 0.7;
-  border-radius: 8px;
-  background-color: #004e78;
-  color: #FFFFFF;
-  font-size: 10pt;
-  text-align: center;
-  vertical-align: middle;
-  background: asset_url('bike_other.png');
+  background: asset_url('bike_other.png') center no-repeat;
+  background-size: cover;
 }
 
 .station-header {
