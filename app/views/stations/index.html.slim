@@ -3,9 +3,11 @@ table.table.table-hover
   thead
     tr
       th =t('name')
+      th =t('total_cost')
       th =t('bikes.free')
   tbody
     - @stations.each do |station|
       tr
-        td= link_to station.name, station
-        td= station.bikes.unused.count
+        td= link_to station[:name], station_path(station[:id])
+        td= station[:total_cost]
+        td= station[:unused_bikes_count]

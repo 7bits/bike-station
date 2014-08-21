@@ -1,6 +1,7 @@
 class StationsController < ApplicationController
   def index
-    @stations = Station.all
+    models = Station.all
+    @stations = StationPresenter.wrap_table(models)
 
     @breadcrumbs = [Breadcrumb.new(t('stations'), stations_path, 'active')]
   end
