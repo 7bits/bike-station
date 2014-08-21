@@ -23,10 +23,10 @@
         success: function(locations) {
           present_bike_ids = [];
 
+          present_bike_ids = bikes_overlays.map(function(bike_overlay) {
+            return bike_overlay.bike_id;
+          });
           locations.locations.forEach(function(location) {
-            present_bike_ids = bikes_overlays.map(function(bike_overlay) {
-              return bike_overlay.bike_id;
-            });
             if (present_bike_ids.indexOf(location.bike_id) == -1) {
               content = '<div class="other_bike_overlay"/>'
               if (location.station_id == station_id) {
@@ -73,8 +73,17 @@
           });
           present_bike_ids.forEach(function(bike_id) {
             if (present_location_ids.indexOf(bike_id) == -1) {
-              map.removeOverlay(bikes_overlays[bike_id].overlay);
-              bikes_overlays.splice(bike_id, 1);
+              var index = -1;
+              for (var i = bikes_overlays.length - 1; i >= 0; i--) {
+                if (bikes_overlays[i].bike_id == bike_id) {
+                  index = i;
+                  break;
+                }
+              }
+              if (index >= 0) {
+                map.removeOverlay(bikes_overlays[index].overlay);
+              }
+              bikes_overlays.splice(index, 1);
             }
           });
         }
