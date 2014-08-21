@@ -26,12 +26,18 @@ class TimeDiff
 
     word_and = I18n.t :'and'
 
-    if days > 0
-      "#{days} #{days_form} #{word_and} #{hours % 24} #{hours_form}"
-    elsif hours > 0
-      "#{hours} #{hours_form} #{word_and} #{mins % 60} #{minutes_form}"
+    if hours > 0
+      if mins > 0
+        "#{hours} #{hours_form} #{word_and} #{mins % 60} #{minutes_form}"
+      else
+        "#{hours} #{hours_form} #{word_and}"
+      end
     elsif mins > 0
-      "#{mins} #{minutes_form} #{word_and} #{secs % 60} #{seconds_form}"
+      if secs > 0
+        "#{mins} #{minutes_form} #{word_and} #{secs % 60} #{seconds_form}"
+      else
+        "#{mins} #{minutes_form} #{word_and}"
+      end
     elsif secs >= 0
       "#{secs} #{seconds_form}"
     end
