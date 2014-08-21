@@ -7,7 +7,7 @@ class RentsHistoryPresenter
 
   def wrap
     {
-        day: history.day,
+        day: DayPresenter.new.wrap(history.day),
         rents: RentBikesPresenter.wrap(history.rents)
     }
   end

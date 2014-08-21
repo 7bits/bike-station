@@ -1,5 +1,5 @@
 - @presenter.each do |p|
-  h3= p[:day].to_formatted_s(:short)
+  h3= p[:day]
   ul
     - p[:rents].each do |rent|
       li= rent[:bike][:name] + ' (' + rent[:user][:name] + ' ' + rent[:user][:surname] + ', ' + rent[:rent][:time] + ')'

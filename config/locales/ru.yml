@@ -37,6 +37,9 @@ ru:
       few: секунды
       many: секунд
   and: и
+  day:
+    today: 'Сегодня'
+    yesterday: 'Вчера'
   currency:
     one: рубль
     few: рубля
@@ -45,3 +48,13 @@ ru:
     sign_in:
       vk: Войти через VK
     success: Успешная регистрация. Дождитесь подтверждения вашего аккаунта и после этого обновите страницу.
+
+  activerecord:
+    models:
+      operator: Оператор
+      admin: Администратор
+      bike: Велосипед
+      rate: Тариф
+      rent: Аренда
+    attributes:
+      name: Имя
