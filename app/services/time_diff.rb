@@ -17,10 +17,8 @@ class TimeDiff
     secs  = (to - from).to_i
     mins  = secs / 60
     hours = mins / 60
-    days  = hours / 24
 
-    days_form = I18n.t 'time.days.' + plural_form(days)
-    hours_form = I18n.t 'time.hours.' + plural_form(hours % 24)
+    hours_form = I18n.t 'time.hours.' + plural_form(hours)
     minutes_form = I18n.t 'time.minutes.' + plural_form(mins % 60)
     seconds_form = I18n.t 'time.seconds.' + plural_form(secs % 60)
 
