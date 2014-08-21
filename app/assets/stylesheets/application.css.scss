@@ -52,6 +52,15 @@ div.other_bike_overlay {
   background-size: cover;
 }
 
+div.bike_info {
+  background-color: #ffc107;
+  opacity: 0.8;
+  border-radius: 5px;
+  font-size: 10pt;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .station-header {
   .station-buttons {
     display: inline-block;

@@ -26,9 +26,11 @@ class Api::V1::BikesController < ActionController::Base
 
   def locations
     locations = Location.all
-    presenter = LocationPresenter.wrap(locations)
+    locations_presenter = LocationPresenter.wrap(locations)
+    rents = Rent.where(closed_at: nil)
+    rents_presenter = RentLocationPresenter.wrap(rents)
 
-    render json: {locations: presenter}, status: :ok
+    render json: {locations: locations_presenter, rented_bikes: rents_presenter}, status: :ok
   end
 
   def location
