@@ -68,7 +68,7 @@ div.other_bike_overlay {
   }
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: $screen-sm) {
   .station-header {
     .station-buttons {
       .btn {
@@ -77,6 +77,11 @@ div.other_bike_overlay {
         margin-bottom: 8px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: $screen-md) {
+  .station-header {
     .total-cost {
       display: block;
       margin-bottom: 10px;

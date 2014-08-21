@@ -1,11 +1,11 @@
 .station-header
+  .total-cost
+    p= t('today_cost') + " + #{@total_cost}"
+
   .station-buttons
     =link_to t('rent.open'), open_station_rents_path(@station), class: 'btn btn-default btn-lg'
     =link_to t('rent.close'), close_station_rents_path(@station), class: 'btn btn-default btn-lg'
     =link_to t('history'), history_station_path(@station), class: 'btn btn-default btn-lg'
-
-  .total-cost
-    p= t('today_cost') + " + #{@total_cost}"
 
 #map
 
