@@ -7,7 +7,7 @@ class StationsController < ApplicationController
 
   def show
     @station = Station.find params[:id]
-    @total_cost = CostCounter.new.calculate_daily_cost(@station)
+    @total_cost = CurrencyPresenter.new.wrap CostCounter.new.calculate_daily_cost(@station)
 
     @breadcrumbs = [
         Breadcrumb.new(t('stations'), stations_path, 'not-active'),

@@ -18,6 +18,7 @@ ru:
     free: Свободно мест
   opened_at: Дата открытия
   today: Сегодня
+  today_cost: Выручка за сегодня
   time:
     days:
       one: день
@@ -36,3 +37,7 @@ ru:
       few: секунды
       many: секунд
   and: и
+  currency:
+    one: рубль
+    few: рубля
+    many: рублей

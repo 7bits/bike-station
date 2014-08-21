@@ -4,11 +4,8 @@ table.table.table-hover
     tr
       th =t('name')
       th =t('bikes.free')
-      th =t('gates.free')
-      th
   tbody
     - @stations.each do |station|
       tr
         td= link_to station.name, station
         td= station.bikes.unused.count
-        td= station.free_gates_count
