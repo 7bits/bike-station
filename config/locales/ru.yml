@@ -19,7 +19,7 @@ ru:
   opened_at: Дата открытия
   today: Сегодня
   today_cost: Выручка за сегодня
-  tatal_cost: ВЫручка за всё время
+  total_cost: ВЫручка за всё время
   time:
     formats:
       short: ! '%d %B, %H:%M'
