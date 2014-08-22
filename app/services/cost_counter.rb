@@ -11,7 +11,7 @@ class CostCounter
   end
 
   def calculate_total_cost(station)
-    station.incoming_rents.closed.map do |rent|
+    station.outgoing_rents.closed.map do |rent|
       calculate_cost(rent)
     end.inject(&:+) || 0
   end
