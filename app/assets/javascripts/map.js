@@ -31,6 +31,7 @@
         bike_name = "";
         user_name = "";
         user_surname = "";
+        openned_at = "";
 
         bikes_overlays.forEach(function(overlay) {
           if (overlay.bike_id == bike_id) {
@@ -43,6 +44,7 @@
             user_name = rented_bike.user.name;
             user_surname = rented_bike.user.surname;
             bike_name = rented_bike.bike.name;
+            openned_at = rented_bike.rent.openned_at;
           }
         });
         // console.log(bike_id, bike_lat, bike_lng, bike_name, user_name, user_surname);
@@ -52,8 +54,8 @@
           lng: bike_lng,
           layer: 'overlayMouseTarget',
           verticalAlign: 'bottom',
-          verticalOffset: 12,
-          content: '<div class="bike_info" onClick="$.remove_info()"><p>' + bike_name + '<br>' + user_name + ' ' + user_surname + '</p></div>'
+          verticalOffset: 15,
+          content: '<div class="bike_info" onClick="$.remove_info()"><p>' + bike_name + '</p><p>' + user_name + ' ' + user_surname + '</p><p>' + openned_at + '</p></div>'
         });
 
         info_overlays.push(info_overlay);
