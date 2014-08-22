@@ -1,7 +1,7 @@
 (function($){
   var server_error_handler = function() {
     console.error('Something went wrong.');
-  }
+  };
 
   window.Map = {
     render: function(station_lat, station_lng, station_id) {
@@ -22,16 +22,16 @@
           map.removeOverlay(info_overlay);
         });
         info_overlays = [];
-      }
+      };
 
       $.show_info = function(bike_id) {
         $.remove_info();
-        bike_lat = 0;
-        bike_lng = 0;
-        bike_name = "";
-        user_name = "";
-        user_surname = "";
-        openned_at = "";
+        var bike_lat = 0;
+        var bike_lng = 0;
+        var bike_name = "";
+        var user_name = "";
+        var user_surname = "";
+        var openned_at = "";
 
         bikes_overlays.forEach(function(overlay) {
           if (overlay.bike_id == bike_id) {
@@ -59,7 +59,7 @@
         });
 
         info_overlays.push(info_overlay);
-      }
+      };
 
       function update_bikes_pos() {
 
@@ -69,17 +69,17 @@
           dataType: 'json',
           success: function(locations) {
             rented_bikes = locations.rented_bikes;
-            present_bike_ids = [];
+            var present_bike_ids = [];
 
             present_bike_ids = bikes_overlays.map(function(bike_overlay) {
               return bike_overlay.bike_id;
             });
             locations.locations.forEach(function(location) {
               if (present_bike_ids.indexOf(location.bike_id) == -1) {
-                content = '<div class="other_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>'
+                content = '<div class="other_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>';
                 if (location.station_id == station_id) {
-                  content = '<div class="my_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>'
-                };
+                  content = '<div class="my_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>';
+                }
                 overlay = map.drawOverlay({
                   lat: location.lat,
                   lng: location.lng,
@@ -96,13 +96,13 @@
               bikes_overlays.forEach(function(bike_overlay) {
                 if (bike_overlay.bike_id == location.bike_id) {
 
-                  if ( bike_overlay.lat != location.lat
-                    || bike_overlay.lng != location.lng) {
+                  if ((bike_overlay.lat != location.lat)
+                    || (bike_overlay.lng != location.lng)) {
 
-                    content = '<div class="other_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>'
+                    content = '<div class="other_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>';
                     if (location.station_id == station_id) {
-                      content = '<div class="my_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>'
-                    };
+                      content = '<div class="my_bike_overlay" onClick="$.show_info(' + location.bike_id + ')"/>';
+                    }
 
                     map.removeOverlay(bike_overlay.overlay);
 
@@ -165,5 +165,5 @@
         error: server_error_handler,
       });
     }
-  }
+  };
 })(jQuery);
