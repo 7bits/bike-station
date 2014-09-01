@@ -8,4 +8,9 @@ class RentsHistory < ActiveRecord::Base
   def rents
     Rent.where('id IN (?)', self.rents_ids)
   end
+
+  # It is PSQL View
+  def readonly?
+    true
+  end
 end

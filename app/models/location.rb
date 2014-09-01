@@ -4,4 +4,9 @@ class Location < ActiveRecord::Base
   default_scope { order 'bike_id DESC' }
 
   belongs_to :bike
+
+  # It is PSQL View
+  def readonly?
+    true
+  end
 end
