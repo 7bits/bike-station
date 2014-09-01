@@ -1,26 +1,13 @@
 class TimeDiff
 
-  def plural_form(number)
-    if (number % 100).between?(10, 15)
-      return 'many'
-    end
-    case number % 10
-    when 1
-      return 'one'
-    when 2..4
-      return 'few'
-    end
-    return 'many'
-  end
-
   def diff(from, to)
     secs  = (to - from).to_i
     mins  = secs / 60
     hours = mins / 60
 
-    hours_form = I18n.t 'time.hours.' + plural_form(hours)
-    minutes_form = I18n.t 'time.minutes.' + plural_form(mins % 60)
-    seconds_form = I18n.t 'time.seconds.' + plural_form(secs % 60)
+    hours_form = I18n.t 'time.hours', count: hours
+    minutes_form = I18n.t 'time.minutes', count: mins % 60
+    seconds_form = I18n.t 'time.seconds', count: secs % 60
 
     word_and = I18n.t :'and'
 
