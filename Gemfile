@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+#ruby=ruby-2.1.2
+#ruby-gemset=smartbike
+
 gem 'rails', '4.1.4'
 gem 'thin'
 gem 'pg'
