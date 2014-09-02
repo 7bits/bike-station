@@ -80,6 +80,11 @@ GEM
     gcm (0.0.7)
       httparty
       json
+    handlebars_assets (0.17.1)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hashie (3.2.0)
     hike (1.2.3)
     httparty (0.13.1)
@@ -295,6 +300,7 @@ DEPENDENCIES
   coveralls
   factory_girl_rails
   gcm
+  handlebars_assets
   jquery-rails
   meta_request
   omniauth

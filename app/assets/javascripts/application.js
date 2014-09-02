@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars.runtime
+//= require_tree ./templates 
 // require turbolinks
 //= require gmaps
 //= require bootstrap/collapse
-//= require_tree .
+//= require map
+
+var App = App || {};
+window.App = App;
