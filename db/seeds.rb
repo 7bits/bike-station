@@ -18,7 +18,7 @@ station_3 = Station.create(name: 'Речной порт', latitude: 54.946384, l
 station_4 = Station.create(name: 'Парк культуры и отдыха', latitude: 54.972240, longitude: 73.412647, gates_count: 10)
 station_5 = Station.create(name: 'СКК имени Виктора Блинова', latitude: 54.975311, longitude: 73.394763, gates_count: 10)
 station_6 = Station.create(name: 'Фестиваль', latitude: 54.980632, longitude: 73.322986, gates_count: 10)
-station_7 = Station.create(name: 'ОмГУ ФКН', latitude: 54.036532, longitude: 73.269825, gates_count: 10)
+station_7 = Station.create(name: 'ОмГУ ФКН', latitude: 54.036532, longitude: 73.269736, gates_count: 10)
 station_8 = Station.create(name: 'It-loft', latitude: 54.976856, longitude: 73.3913869, gates_count: 10)
 
 rate_1 = Rate.create(name: 'Тариф "Спортивный"', price: 1)
