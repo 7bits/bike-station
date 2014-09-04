@@ -9,16 +9,42 @@ $ ->
     rented_bikes: []
     info_overlays: []
 
-    bike_overlay: HandlebarsTemplates['bike_overlay']
-    station_overlay: HandlebarsTemplates['station_overlay']
+    bike_overlay_tmpl: HandlebarsTemplates['bike_overlay']
+    station_overlay_tmpl: HandlebarsTemplates['station_overlay']
+    info_overlay_tmpl: HandlebarsTemplates['info_overlay']
 
 
 
     constructor: (@el) ->
       $(document).on('click', '.js-bike-overlay', @show_info)
+      $(document).on('click', '.js-info-overlay', @remove_info)
 
     show_info: (event) =>
-      console.log @rented_bikes
+      @remove_info()
+      bike_id = $(event.target).data('bike-id')
+      overlay = @bikes_overlays.filter (o) -> (o.bike_id == bike_id)
+      rent = @rented_bikes.filter (r) -> (r.bike.bike_id == bike_id)
+      return if overlay == undefined || rent == undefined || overlay[0] == undefined || rent[0] == undefined
+      
+      info = {}
+      info.lat = overlay[0].lat
+      info.lng = overlay[0].lng
+      info.user_name = rent[0].user.name
+      info.user_surname = rent[0].user.surname
+      info.bike_name = rent[0].bike.name
+      info.opened_at = rent[0].rent.openned_at
+
+      info_overlay = @map.drawOverlay
+        lat: info.lat
+        lng: info.lng
+        layer: 'overlayMouseTarget',
+        verticalAlign: 'bottom',
+        verticalOffset: 15,
+        content: @info_overlay_tmpl(info)
+
+      @info_overlays.push info_overlay
+
+
 
     remove_info: (event) =>
       @map.removeOverlay(info) for info in @info_overlays
@@ -44,7 +70,7 @@ $ ->
               lng: station.lng
               title: station.name
               layer: 'overlayMouseTarget'
-              content: @station_overlay(station)
+              content: @station_overlay_tmpl(station)
         error: (err)->
           console.log(err)
 
@@ -66,7 +92,7 @@ $ ->
                   lat: location.lat
                   lng: location.lng
                   layer: 'overlayMouseTarget'
-                  content: @bike_overlay(location)
+                  content: @bike_overlay_tmpl(location)
 
                 @bikes_overlays.push
                   bike_id: location.bike_id
@@ -82,7 +108,7 @@ $ ->
                     lat: location.lat
                     lng: location.lng
                     layer: 'overlayMouseTarget'
-                    content: @bike_overlay(location)
+                    content: @bike_overlay_tmpl(location)
                   bike_overlay.lat = location.lat
                   bike_overlay.lng = location.lng
 
