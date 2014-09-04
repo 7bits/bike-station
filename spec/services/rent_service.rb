@@ -14,7 +14,7 @@ RSpec.describe RentService do
 
     it 'closed at is nul' do
       expect(service.open_rent(user, bike).closed_at).to be_nil 
-      expect(service.open_rent(user, bike).openned_at).to_not be_nil 
+      expect(service.open_rent(user, bike).opened_at).to_not be_nil 
     end
   end
 

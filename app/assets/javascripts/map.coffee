@@ -32,7 +32,7 @@ $ ->
       info.user_name = rent[0].user.name
       info.user_surname = rent[0].user.surname
       info.bike_name = rent[0].bike.name
-      info.opened_at = rent[0].rent.openned_at
+      info.opened_at = rent[0].rent.opened_at
 
       info_overlay = @map.drawOverlay
         lat: info.lat

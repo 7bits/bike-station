@@ -223,7 +223,7 @@ CREATE TABLE rents (
     id integer NOT NULL,
     bike_id integer,
     user_id integer,
-    openned_at timestamp without time zone,
+    opened_at timestamp without time zone,
     closed_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -561,4 +561,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140819060503');
 INSERT INTO schema_migrations (version) VALUES ('20140820050501');
 
 INSERT INTO schema_migrations (version) VALUES ('20140904044713');
+
+INSERT INTO schema_migrations (version) VALUES ('20140904050843');
 

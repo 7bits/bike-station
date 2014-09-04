@@ -5,7 +5,7 @@ class RentLocationPresenter
   end
 
   def wrap
-    openned_at = I18n.l rent.openned_at, format: :short
+    opened_at = I18n.l rent.opened_at, format: :short
     hash = {
       user: {
         name: rent.user.name,
@@ -16,7 +16,7 @@ class RentLocationPresenter
         bike_id: rent.bike.id
       },
       rent: {
-        openned_at: openned_at
+        opened_at: opened_at
       }
     }
   end

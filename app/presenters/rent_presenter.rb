@@ -10,7 +10,7 @@ class RentPresenter
   def wrap
     hash = {
       rent: {
-        openned_at: rent.openned_at, 
+        opened_at: rent.opened_at, 
         closed_at: rent.closed_at,
         cost: rent.rate.price,
         total_cost: cost

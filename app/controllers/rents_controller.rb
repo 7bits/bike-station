@@ -2,7 +2,7 @@ class RentsController < ApplicationController
   before_action :find_station
 
   def closing
-    @rents = Rent.openned
+    @rents = Rent.opened
 
     @breadcrumbs = [
         Breadcrumb.new(t('stations'), stations_path, 'not-active'),
@@ -42,7 +42,7 @@ class RentsController < ApplicationController
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
       redirect_to @station
     else
-      @rents = Rent.openned # TODO: only for rendering errros. Replase method with ajax and remove it
+      @rents = Rent.opened # TODO: only for rendering errros. Replase method with ajax and remove it
       render :opening
     end
   end
