@@ -13,7 +13,8 @@ class RentPresenter
         opened_at: rent.opened_at, 
         closed_at: rent.closed_at,
         cost: rent.rate.price,
-        total_cost: cost
+        total_cost: cost,
+        total_cost_pretty: CurrencyPresenter.new.wrap(cost)
       },
       user: {
         id: rent.user.id,

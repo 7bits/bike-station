@@ -62,6 +62,7 @@ class RentsController < ApplicationController
       cost = cost_counter.calculate_cost(rent)
       rent_presenter = RentPresenter.new(rent, cost, :close)
       push_sender.send_notification_to(rent.bike, rent_presenter.wrap)
+      flash[:success] = ClosedRentFlash.new(rent_presenter.wrap).flash
       redirect_to history_station_path(@station)
     end
   end

@@ -15,7 +15,9 @@ class RentBikesPresenter
         cost: CurrencyPresenter.new.wrap(CostCounter.new.calculate_cost(rent))
       },
       bike: {
-        name: rent.bike.name
+        id: rent.bike.id,
+        name: rent.bike.name,
+        name_with_id: "#{rent.bike.id} - #{rent.bike.name}"
       }
     }
   end
