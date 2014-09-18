@@ -14,7 +14,7 @@ table.table.table-hover
         td= rent.user.surname
         td= l rent.opened_at, format: :short
         td= rent.starting_station.name
-        td= rent.bike.name
+        td= rent.bike.name_with_id
         td
           =link_to t('close'), close_station_rent_path(@station, rent), method: :patch, class: 'btn btn-default'
           =link_to t('photo'), rent.user.photo.try(:url), class: 'btn'

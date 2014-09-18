@@ -11,7 +11,8 @@ class RentBikesPresenter
         surname: rent.user.surname,
       },
       rent: {
-        time: TimeDiff.new.diff(rent.opened_at, rent.closed_at)
+        time: TimeDiff.new.diff(rent.opened_at, rent.closed_at),
+        cost: CurrencyPresenter.new.wrap(CostCounter.new.calculate_cost(rent))
       },
       bike: {
         name: rent.bike.name

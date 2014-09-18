@@ -5,4 +5,8 @@ class Bike < ActiveRecord::Base
   has_one :locations
 
   scope :unused, -> { where in_use: false }
+
+  def name_with_id
+    "#{id} - #{name}"
+  end
 end

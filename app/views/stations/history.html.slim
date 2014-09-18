@@ -2,4 +2,4 @@
   h3= p[:day]
   ul
     - p[:rents].each do |rent|
-      li= rent[:bike][:name] + ' (' + rent[:user][:name] + ' ' + rent[:user][:surname] + ', ' + rent[:rent][:time] + ')'
+      li= "#{rent[:bike][:name]} (#{rent[:user][:name]} #{rent[:user][:surname]}, #{rent[:rent][:time]},  #{rent[:rent][:cost]})"

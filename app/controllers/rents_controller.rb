@@ -11,10 +11,6 @@ class RentsController < ApplicationController
     ]
   end
 
-  def show
-    @rent = Rent.find(params[:id])
-  end
-
   def opening
     @form = RentInput.new
 
